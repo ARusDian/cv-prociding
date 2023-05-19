@@ -1,5 +1,6 @@
 import { InertiaLink } from '@inertiajs/inertia-react';
 import React, { PropsWithChildren } from 'react';
+import "../../../css/app.css";
 
 interface Props {
   as?: string;

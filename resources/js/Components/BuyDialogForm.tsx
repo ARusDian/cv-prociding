@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import InputError from "./Jetstream/InputError";
 import InputLabel from "./Jetstream/InputLabel";
 import TextInput from "./Jetstream/TextInput";
+import "../../css/app.css";
 
 interface Props {
     open: boolean;

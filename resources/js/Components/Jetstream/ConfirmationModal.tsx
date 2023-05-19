@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import Modal, { ModalProps } from '@/Components/Jetstream/Modal';
+import "../../../css/app.css";
 
 ConfirmationModal.Content = function ConfirmationModalContent({
   title,

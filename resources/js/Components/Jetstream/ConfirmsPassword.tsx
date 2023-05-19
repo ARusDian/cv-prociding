@@ -7,6 +7,7 @@ import InputError from '@/Components/Jetstream/InputError';
 import PrimaryButton from '@/Components/Jetstream/PrimaryButton';
 import TextInput from '@/Components/Jetstream/TextInput';
 import SecondaryButton from '@/Components/Jetstream/SecondaryButton';
+import "../../../css/app.css";
 
 interface Props {
   title?: string;

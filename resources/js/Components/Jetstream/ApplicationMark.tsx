@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../../css/app.css";
 
 export default function ApplicationMark(
   props: React.SVGProps<SVGSVGElement>,

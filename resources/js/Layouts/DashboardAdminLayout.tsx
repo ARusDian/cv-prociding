@@ -11,6 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Dropdown from '@/Components/Jetstream/Dropdown';
 import DropdownLink from '@/Components/Jetstream/DropdownLink';
+import "../../css/app.css";
 
 interface Props {
     title: string;

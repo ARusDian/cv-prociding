@@ -3,6 +3,7 @@ import React, { PropsWithChildren } from 'react';
 import AuthenticationCardLogo from '@/Components/Jetstream/AuthenticationCardLogo';
 import { useMediaQuery } from '@/Hooks/useMediaQuery';
 import { asset } from '@/Models/Helper';
+import "../../../css/app.css";
 
 export default function AuthenticationCard({
   children,

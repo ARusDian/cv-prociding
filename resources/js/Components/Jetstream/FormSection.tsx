@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { PropsWithChildren } from 'react';
 import SectionTitle from '@/Components/Jetstream/SectionTitle';
+import "../../../css/app.css";
 
 interface Props {
   title: string;

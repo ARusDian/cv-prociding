@@ -3,6 +3,7 @@ import React from 'react';
 import useRoute from '@/Hooks/useRoute';
 import useTypedPage from '@/Hooks/useTypedPage';
 import { Head } from '@inertiajs/inertia-react';
+import "../../css/app.css";
 
 interface Props {
   canLogin: boolean;

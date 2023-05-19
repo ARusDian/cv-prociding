@@ -1,5 +1,6 @@
 import { asset } from "@/Models/Helper";
 import React from "react";
+import "../../css/app.css";
 
 interface Props {
     children: React.ReactNode;

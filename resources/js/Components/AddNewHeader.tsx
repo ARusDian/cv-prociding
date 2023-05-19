@@ -1,4 +1,5 @@
 import React, { MouseEventHandler, ReactNode } from 'react';
+import "../../css/app.css";
 
 interface Props {
     title: ReactNode;

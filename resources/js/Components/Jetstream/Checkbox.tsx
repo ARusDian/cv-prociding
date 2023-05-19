@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import "../../../css/app.css";
 
 export default function Checkbox(
   props: React.DetailedHTMLProps<

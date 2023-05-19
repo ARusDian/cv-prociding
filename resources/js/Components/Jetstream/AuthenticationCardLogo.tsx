@@ -1,6 +1,7 @@
 import { asset } from '@/Models/Helper';
 import { InertiaLink } from '@inertiajs/inertia-react';
 import React from 'react';
+import "../../../css/app.css";
 
 export default function AuthenticationCardLogo() {
   return (

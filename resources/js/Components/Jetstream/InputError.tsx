@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+import "../../../css/app.css";
 
 interface Props {
   message?: string;

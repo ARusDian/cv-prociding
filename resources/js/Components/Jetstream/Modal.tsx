@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import React, { PropsWithChildren } from 'react';
 import ReactDOM from 'react-dom';
+import "../../../css/app.css";
 
 export interface ModalProps {
   isOpen: boolean;

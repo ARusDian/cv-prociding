@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { forwardRef } from 'react';
+import "../../../css/app.css";
 
 const JetInput = forwardRef<
     HTMLInputElement,

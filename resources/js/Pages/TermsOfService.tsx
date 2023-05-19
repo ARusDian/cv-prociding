@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthenticationCardLogo from '@/Components/Jetstream/AuthenticationCardLogo';
 import { Head } from '@inertiajs/inertia-react';
+import "../../css/app.css";
 
 interface Props {
   terms: string;
