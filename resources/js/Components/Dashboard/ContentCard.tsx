@@ -17,8 +17,7 @@ const ContentCard = ({ editURL, content }: Props) => {
 
   const toggleActive = () => {
     form.put(route('proc.toggle_active', content.id), {
-      onError: (err) => console.log(err),
-      onSuccess: () => console.log("success")
+      onError: (err) => console.log(err)
     });
   };
 

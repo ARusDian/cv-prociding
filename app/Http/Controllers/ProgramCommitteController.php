@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\PageContent;
 use App\Models\PageContentImage;
-use App\Models\ProgramCommitte;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -74,18 +73,19 @@ class ProgramCommitteController extends Controller
     if ($activedContent && ($activedContent->id == $toBeActiveProgramCommitte->id)) {
       $activedContent->is_active = false;
       $activedContent->save();
-      return redirect()->back();
+    } else {
+      $is_active = $toBeActiveProgramCommitte->is_active;
+      $toBeActiveProgramCommitte->is_active = !$is_active;
+      $toBeActiveProgramCommitte->save();
+      if ($activedContent) {
+        $activedContent->is_active = false;
+        $activedContent->save();
+      }
     }
-
-    $is_active = $toBeActiveProgramCommitte->is_active;
-    $toBeActiveProgramCommitte->is_active = !$is_active;
-    $toBeActiveProgramCommitte->save();
-    if ($activedContent) {
-      $activedContent->is_active = false;
-      $activedContent->save();
-    }
-
-    return redirect()->back();
+    // return response()->json([
+    //   "message" => "Berhasil mengupdate status!"
+    // ], 200);
+    return redirect()->route('proc.home')->banner('Berhasil mengupdate status!');
   }
   
   public function update(Request $request, string $id) {
