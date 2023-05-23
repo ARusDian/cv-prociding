@@ -9,19 +9,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
-class ProgramCommitteController extends Controller
-{
-    //
-  public function index() {
-    $contents = PageContent::latest()->where("type", "programCommitte")->get();
 
-    return Inertia::render('Admin/ProgramCommitte/Index', [
-      "contents" => $contents
-    ]);
-  }
+class SubmissionGuidelineController extends Controller
+{
+  public function index() {
+      $contents = PageContent::latest()->where("type", "submissionGuideline")->get();
+
+      return Inertia::render('Admin/SubmissionGuideline/Index', [
+        "contents" => $contents
+      ]);
+    }
 
   public function createPage() {
-    return Inertia::render('Admin/ProgramCommitte/Create');
+    return Inertia::render('Admin/SubmissionGuideline/Create');
   }
 
   public function store(Request $request) {
@@ -41,35 +41,35 @@ class ProgramCommitteController extends Controller
       $newImage = str_replace('data:image/png;base64,', '', $newImage);
       $newImage = str_replace(' ', '+', $newImage);
       $imageName = md5(rand(1, 10)).'.png';
-      Storage::disk('public')->put('program_committe/'.$imageName, base64_decode($newImage));
-      $editorContent = str_replace($image, url('/')."/storage/program_committe/".$imageName , $editorContent);
-      // $editorContent = str_replace('src="'.$image.'"', "src={asset('public','program_committe/".$imageName."')}", $editorContent);
-      array_push($submittedImagesPath, 'program_committe/'.$imageName);
+      Storage::disk('public')->put('submission_guideline/'.$imageName, base64_decode($newImage));
+      $editorContent = str_replace($image, url('/')."/storage/submission_guideline/".$imageName , $editorContent);
+      // $editorContent = str_replace('src="'.$image.'"', "src={asset('public','submission_guideline/".$imageName."')}", $editorContent);
+      array_push($submittedImagesPath, 'submission_guideline/'.$imageName);
     }
-    $newProgramCommitte = PageContent::create([
+    $newPublication = PageContent::create([
       'content' => $editorContent,
-      'type' => "programCommitte"
+      'type' => "submissionGuideline"
     ]);
 
     forEach($submittedImagesPath as $imagePath) {
       PageContentImage::create([
-        'page_content_id' => $newProgramCommitte->id,
+        'page_content_id' => $newPublication->id,
         'path' => $imagePath
       ]);
     }
 
-    return redirect()->route('proc.home');
+    return redirect()->route('sub.home');
   }
 
   public function editPage(string $id) {
-    $programCommitte = PageContent::where('id', $id)->where('type', 'programCommitte')->first();
-    // dd($programCommitte);
-    return Inertia::render('Admin/ProgramCommitte/Edit', ["id" => $id, "programCommitte" => $programCommitte]);
+    $submissionGuideline = PageContent::where('id', $id)->where('type', 'submissionGuideline')->first();
+    // dd($submissionGuideline);
+    return Inertia::render('Admin/SubmissionGuideline/Edit', ["id" => $id, "submissionGuideline" => $submissionGuideline]);
   }
 
   public function toggleActive(string $id) {
-    $activedContent = PageContent::where('is_active', 1)->where('type', 'programCommitte')->first();
-    $toBeActiveProgramCommitte = PageContent::where('id', $id)->where('type', 'programCommitte')->first();
+    $activedContent = PageContent::where('is_active', 1)->where('type', 'submissionGuideline')->first();
+    $toBeActiveProgramCommitte = PageContent::where('id', $id)->where('type', 'submissionGuideline')->first();
 
     if ($activedContent && ($activedContent->id == $toBeActiveProgramCommitte->id)) {
       $activedContent->is_active = false;
@@ -86,7 +86,7 @@ class ProgramCommitteController extends Controller
     // return response()->json([
     //   "message" => "Berhasil mengupdate status!"
     // ], 200);
-    return redirect()->route('proc.home');
+    return redirect()->route('sub.home');
   }
   
   public function update(Request $request, PageContent $id) {
@@ -110,12 +110,12 @@ class ProgramCommitteController extends Controller
         $newImage = str_replace('data:image/png;base64,', '', $newImage);
         $newImage = str_replace(' ', '+', $newImage);
         $imageName = md5(rand(1, 10)).'.png';
-        Storage::disk('public')->put('program_committe/'.$imageName, base64_decode($newImage));
-        $editorContent = str_replace($image, url('/')."/storage/program_committe/".$imageName , $editorContent);
-        array_push($submittedImagesPath, 'program_committe/'.$imageName);
+        Storage::disk('public')->put('submission_guideline/'.$imageName, base64_decode($newImage));
+        $editorContent = str_replace($image, url('/')."/storage/submission_guideline/".$imageName , $editorContent);
+        array_push($submittedImagesPath, 'submission_guideline/'.$imageName);
       }
   
-      forEach($submittedImagesPath as $imagePath) {
+      foreach($submittedImagesPath as $imagePath) {
         PageContentImage::create([
           'page_content_id' => $pageContent->id,
           'path' => $imagePath
@@ -125,14 +125,14 @@ class ProgramCommitteController extends Controller
       $pageContent->content = $editorContent;
       $pageContent->save();
   
-      forEach($pageContentImages as $pageContentImage) {
+      foreach($pageContentImages as $pageContentImage) {
         if (!str_contains($pageContent->content, $pageContentImage->path)) {
           Storage::disk('public')->delete($pageContentImage->path);
           $pageContentImage->delete();
         }
       }
   
-      return redirect()->route('proc.home');
+      return redirect()->route('sub.home');
     });
     
   }
@@ -148,7 +148,7 @@ class ProgramCommitteController extends Controller
 
       PageContent::find($id)->delete();
 
-      return redirect()->route('proc.home');
+      return redirect()->route('sub.home');
     });
   }
 }

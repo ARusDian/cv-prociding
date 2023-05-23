@@ -10,7 +10,8 @@ const ProgramCommitte = () => {
   const [images, setImages] = useState<string[]>([]);
   const form = useForm({
     editorContent: '',
-    images: [] as string[]
+    images: [] as string[],
+    redirectTo: 'proc.home'
   })
 
   useEffect(() => {

@@ -24,6 +24,7 @@ const DashboardAdminTailwind = ({ children }: Props) => {
       <div className="fixed top-0 left-0 h-screen flex justify-center w-64 bg-[#FFA500] Z-0">
         <div className="mt-20 w-11/12">
           <ul className="flex flex-col gap-6 font-roboto">
+            <Link href={route("dashboard.index")} className="px-5 py-2 rounded-xl bg-[#FFD27F] hover:bg-[#FFBB3F]">Dashboard</Link>
             <Link href={route("proc.home")} className="px-5 py-2 rounded-xl bg-[#FFD27F] hover:bg-[#FFBB3F]">Program Committe</Link>
             <Link href={route("pub.home")} className="px-5 py-2 rounded-xl bg-[#FFD27F] hover:bg-[#FFBB3F]">Publication Opportunity</Link>
             <Link href={route("sci-rev.home")} className="px-5 py-2 rounded-xl bg-[#FFD27F] hover:bg-[#FFBB3F]">Scientific Review</Link>

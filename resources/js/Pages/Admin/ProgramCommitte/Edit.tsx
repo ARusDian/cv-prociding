@@ -3,7 +3,6 @@ import DashboardAdminLayoutCSS from '@/Layouts/DashboardAdminLayoutCSS';
 import Jodit from '@/Components/TextEditor/Jodit';
 import { useForm } from "@inertiajs/inertia-react";
 import route from "ziggy-js";
-import { asset } from "@/Models/Helper";
 
 interface IProgramCommitte {
   content: string,
@@ -12,14 +11,13 @@ interface IProgramCommitte {
 
 interface Props {
   id: string,
-  programCommitte: IProgramCommitte
+  programCommitte: IProgramCommitte,
 }
 
 const Edit = ({ id, programCommitte }: Props) => {
   const editorRef = useRef();
   const [editorContent, setEditorContent] = useState(programCommitte.content);
   const [images, setImages] = useState<string[]>([]);
-  console.log(programCommitte.content);
   const form = useForm({
     editorContent: '',
     images: [] as string[]
@@ -32,11 +30,16 @@ const Edit = ({ id, programCommitte }: Props) => {
 
   const submitHandler = () => {
     form.clearErrors();
+    console.log(route('proc.put', id));
     form.put(route('proc.put', id), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),
     })
   };
+
+  const deleteHandler = () => {
+    form.delete(route('proc.delete', id));
+  }
 
   return (
     <div style={{ overflow: "hidden" }}>
@@ -52,7 +55,7 @@ const Edit = ({ id, programCommitte }: Props) => {
         />
 
         <button style={{ marginTop: "12px", backgroundColor: "lightgreen", borderWidth: 1, borderColor: "green", padding: "12px 24px", fontSize: "14px", borderRadius: "16px" }} onClick={submitHandler}>Simpan</button>
-        <button style={{ marginTop: "12px", backgroundColor: "red", borderWidth: 1, borderColor: "#FFA500", padding: "12px 24px", fontSize: "14px", borderRadius: "16px", marginLeft: '10px', color: "white", fontWeight: "bold" }}>Hapus</button>
+        <button style={{ marginTop: "12px", backgroundColor: "red", borderWidth: 1, borderColor: "#FFA500", padding: "12px 24px", fontSize: "14px", borderRadius: "16px", marginLeft: '10px', color: "white", fontWeight: "bold" }} onClick={deleteHandler}>Hapus</button>
       </div>
     </div>
 

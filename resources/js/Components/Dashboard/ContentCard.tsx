@@ -8,15 +8,16 @@ interface Props {
     id: number,
     created_at: Date,
     is_active: boolean,
-  }
+  },
+  toggleActiveURL: string
 }
 
-const ContentCard = ({ editURL, content }: Props) => {
+const ContentCard = ({ editURL, content, toggleActiveURL }: Props) => {
   const date = new Date(content.created_at);
   const form = useForm();
 
   const toggleActive = () => {
-    form.put(route('proc.toggle_active', content.id), {
+    form.put(route(toggleActiveURL, content.id), {
       onError: (err) => console.log(err)
     });
   };
