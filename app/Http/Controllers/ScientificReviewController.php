@@ -11,6 +11,13 @@ use Inertia\Inertia;
 
 class ScientificReviewController extends Controller
 {
+  public function home() {
+    $content = PageContent::where("is_active", "1")->where("type", "scientificReview")->first();
+    return Inertia::render('Home', [
+      "content" => $content
+    ]);
+  }
+
   public function index() {
     $contents = PageContent::latest()->where("type", "scientificReview")->get();
 

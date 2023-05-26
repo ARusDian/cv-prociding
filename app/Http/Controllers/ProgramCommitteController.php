@@ -11,6 +11,12 @@ use Inertia\Inertia;
 
 class ProgramCommitteController extends Controller
 {
+  public function home() {
+    $content = PageContent::where("is_active", "1")->where("type", "programCommitte")->first();
+    return Inertia::render('Home', [
+      "content" => $content
+    ]);
+  }
     //
   public function index() {
     $contents = PageContent::latest()->where("type", "programCommitte")->get();

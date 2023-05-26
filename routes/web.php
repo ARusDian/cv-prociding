@@ -23,14 +23,24 @@ use Inertia\Inertia;
 |
 */
 
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect()->route('proc.index');
 });
+
+// Route::get('/home', [PublicationOpportunityController::class, "home"])->name("home");
+Route::get('/program-committe', [ProgramCommitteController::class, "home"])->name("proc.index");
+Route::get('/publication-opportunity', [PublicationOpportunityController::class, "home"])->name("pub.index");
+Route::get('/scientific-review', [ScientificReviewController::class, "home"])->name("sci-rev.index");
+Route::get('/submission-guideline', [SubmissionGuidelineController::class, "home"])->name("sub.index");
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', function () {

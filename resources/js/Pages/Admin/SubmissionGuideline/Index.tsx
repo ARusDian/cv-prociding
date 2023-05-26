@@ -21,7 +21,7 @@ const Index = ({ contents }: Props) => {
         {/* <Banner /> */}
         <div className="flex flex-row gap-4 items-center">
           <p className='font-bold text-2xl'>Submission Guideline</p>
-          <a href={route("sub.create")} className='py-2 px-4 rounded-full text-2xl bg-[#FFA500] hover:bg-[#ffc14d] '>+</a>
+          <a href={route("sub.create")} className='py-2 px-4 rounded-full text-2xl bg-green-500 hover:bg-[#FFA500] '>+</a>
         </div>
         <div className="flex flex-col gap-4 mt-4">
           {contents && contents.map((content) => (
