@@ -14,7 +14,8 @@ class ProgramCommitteController extends Controller
   public function home() {
     $content = PageContent::where("is_active", "1")->where("type", "programCommitte")->first();
     return Inertia::render('Home', [
-      "content" => $content
+      "content" => $content,
+      "active" => "proc"
     ]);
   }
     //

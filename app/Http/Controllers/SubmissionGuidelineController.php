@@ -15,7 +15,8 @@ class SubmissionGuidelineController extends Controller
   public function home() {
     $content = PageContent::where("is_active", "1")->where("type", "submissionGuideline")->first();
     return Inertia::render('Home', [
-      "content" => $content
+      "content" => $content,
+      "active" => "sub"
     ]);
   }
 

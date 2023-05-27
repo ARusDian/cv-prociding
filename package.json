@@ -47,7 +47,8 @@
     "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
     "react-select": "^5.7.2",
-    "ziggy-js": "^1.5.1"
+    "ziggy-js": "^1.5.1",
+    "react-material-ui-carousel": "^3.4.2"
   },
   "prettier": {
     "semi": true,

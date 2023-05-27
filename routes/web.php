@@ -7,8 +7,6 @@ use App\Http\Controllers\PublicationOpportunityController;
 use App\Http\Controllers\ScientificReviewController;
 use App\Http\Controllers\SubmissionGuidelineController;
 use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -33,7 +31,7 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', function () {
-    return redirect()->route('proc.index');
+    return Inertia::render('HomeIndex', ["active" => "home"]);
 });
 
 // Route::get('/home', [PublicationOpportunityController::class, "home"])->name("home");
