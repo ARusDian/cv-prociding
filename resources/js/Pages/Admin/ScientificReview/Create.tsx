@@ -21,7 +21,7 @@ const PublicationOpportunity = () => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     form.clearErrors();
-    form.post(route('sci-rev.post'), {
+    form.post(route('sci-rev.store'), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),
     })
@@ -31,7 +31,7 @@ const PublicationOpportunity = () => {
     <div style={{ overflow: "hidden"}}>
       <DashboardAdminLayoutCSS redirectTo={route("sci-rev.home")} headerTitle="Create Scientific Review"/>
       <div style={{ all: "initial" }}></div>
-      <form action={route("sci-rev.post")} method="POST" onSubmit={submitHandler}>
+      <form action={route("sci-rev.store")} method="POST" onSubmit={submitHandler}>
         <div style={{ width: "80%", margin: "32px auto" }}>
           <Jodit
             contentValue={form.data.editorContent}

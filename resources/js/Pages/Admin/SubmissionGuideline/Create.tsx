@@ -21,7 +21,7 @@ const PublicationOpportunity = () => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     form.clearErrors();
-    form.post(route('sub.post'), {
+    form.post(route('sub.store'), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),
     })
@@ -31,7 +31,7 @@ const PublicationOpportunity = () => {
     <div style={{ overflow: "hidden"}}>
       <DashboardAdminLayoutCSS redirectTo={route("sub.home")} headerTitle="Create Submission Guidline"/>
       <div style={{ all: "initial" }}></div>
-      <form action={route("sub.post")} method="POST" onSubmit={submitHandler}>
+      <form action={route("sub.store")} method="POST" onSubmit={submitHandler}>
         <div style={{ width: "80%", margin: "32px auto" }}>
           <Jodit
             contentValue={form.data.editorContent}

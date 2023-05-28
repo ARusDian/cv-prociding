@@ -52,34 +52,34 @@ Route::prefix('dashboard')->group(function () {
 
     Route::get('/publication-opportunity', [PublicationOpportunityController::class, 'index'])->name('pub.home');
     Route::get('/publication-opportunity/create', [PublicationOpportunityController::class, 'createPage'])->name("pub.create");
-    Route::post('/publication-opportunity/create', [PublicationOpportunityController::class, 'store'])->name("pub.post");
+    Route::post('/publication-opportunity/create', [PublicationOpportunityController::class, 'store'])->name("pub.store");
     Route::get('/publication-opportunity/{id}', [PublicationOpportunityController::class, 'editPage'])->name("pub.edit");
-    Route::put('/publication-opportunity/{id}', [PublicationOpportunityController::class, 'update'])->name("pub.put");
-    Route::delete('/publication-opportunity/{id}', [PublicationOpportunityController::class, 'destroy'])->name("pub.delete");
+    Route::put('/publication-opportunity/{id}', [PublicationOpportunityController::class, 'update'])->name("pub.update");
+    Route::delete('/publication-opportunity/{id}', [PublicationOpportunityController::class, 'destroy'])->name("pub.destroy");
     Route::put('/publication-opportunity/{id}/toggle_active', [PublicationOpportunityController::class, 'toggleActive'])->name("pub.toggle_active");
     
     Route::get('/program-committe', [ProgramCommitteController::class, 'index'])->name("proc.home");
     Route::get('/program-committe/create', [ProgramCommitteController::class, 'createPage'])->name("proc.create");
-    Route::post('/program-committe/create', [ProgramCommitteController::class, 'store'])->name("proc.post");
+    Route::post('/program-committe/create', [ProgramCommitteController::class, 'store'])->name("proc.store");
     Route::get('/program-committe/{id}', [ProgramCommitteController::class, 'editPage'])->name("proc.edit");
     Route::put('/program-committe/{id}', [ProgramCommitteController::class, 'update'])->name("proc.put");
-    Route::delete('/program-committe/{id}', [ProgramCommitteController::class, 'destroy'])->name("proc.delete");
+    Route::delete('/program-committe/{id}', [ProgramCommitteController::class, 'destroy'])->name("proc.destroy");
     Route::put('/program-committe/{id}/toggle_active', [ProgramCommitteController::class, 'toggleActive'])->name("proc.toggle_active");
     
     Route::get('/scientific-review', [ScientificReviewController::class, 'index'])->name("sci-rev.home");
     Route::get('/scientific-review/create', [ScientificReviewController::class, 'createPage'] )->name("sci-rev.create");
-    Route::post('/scientific-review/create', [ScientificReviewController::class, 'store'] )->name("sci-rev.post");
+    Route::post('/scientific-review/create', [ScientificReviewController::class, 'store'] )->name("sci-rev.store");
     Route::get('/scientific-review/{id}', [ScientificReviewController::class, 'editpage'] )->name("sci-rev.edit");
-    Route::put('/scientific-review/{id}', [ScientificReviewController::class, 'update'] )->name("sci-rev.put");
-    Route::delete('/scientific-review/{id}', [ScientificReviewController::class, 'destroy'])->name("sci-rev.delete");
+    Route::put('/scientific-review/{id}', [ScientificReviewController::class, 'update'] )->name("sci-rev.update");
+    Route::delete('/scientific-review/{id}', [ScientificReviewController::class, 'destroy'])->name("sci-rev.destroy");
     Route::put('/scientific-review/{id}/toggle_active', [ScientificReviewController::class, 'toggleActive'])->name("sci-rev.toggle_active");
     
     Route::get('/submission-guideline', [SubmissionGuidelineController::class, 'index'])->name("sub.home");
     Route::get('/submission-guideline/create', [SubmissionGuidelineController::class, 'createPage'])->name("sub.create");
-    Route::post('/submission-guideline/create', [SubmissionGuidelineController::class, 'store'])->name("sub.post");
+    Route::post('/submission-guideline/create', [SubmissionGuidelineController::class, 'store'])->name("sub.store");
     Route::get('/submission-guideline/{id}', [SubmissionGuidelineController::class, 'editPage'])->name("sub.edit");
-    Route::put('/submission-guideline/{id}', [SubmissionGuidelineController::class, 'update'])->name("sub.put");
-    Route::delete('/submission-guideline/{id}', [SubmissionGuidelineController::class, 'destroy'])->name("sub.delete");
+    Route::put('/submission-guideline/{id}', [SubmissionGuidelineController::class, 'update'])->name("sub.update");
+    Route::delete('/submission-guideline/{id}', [SubmissionGuidelineController::class, 'destroy'])->name("sub.destroy");
     Route::put('/submission-guideline/{id}/toggle_active', [SubmissionGuidelineController::class, 'toggleActive'])->name("sub.toggle_active");
 });
 

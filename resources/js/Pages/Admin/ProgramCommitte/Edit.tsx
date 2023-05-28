@@ -38,7 +38,7 @@ const Edit = ({ id, programCommitte }: Props) => {
   };
 
   const deleteHandler = () => {
-    form.delete(route('proc.delete', id));
+    form.delete(route('proc.destroy', id));
   }
 
   return (

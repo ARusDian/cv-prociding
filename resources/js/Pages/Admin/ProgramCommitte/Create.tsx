@@ -22,7 +22,7 @@ const ProgramCommitte = () => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     form.clearErrors();
-    form.post(route('proc.post'), {
+    form.post(route('proc.store'), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),
     })
@@ -32,7 +32,7 @@ const ProgramCommitte = () => {
     <div style={{ overflow: "hidden" }}>
       <DashboardAdminLayoutCSS redirectTo={route("proc.home")} headerTitle="Create Program Committe"/>
       <div style={{ all: "initial" }}></div>
-      <form action={route("proc.post")} method="POST" onSubmit={submitHandler}>
+      <form action={route("proc.store")} method="POST" onSubmit={submitHandler}>
         <div style={{ width: "80%", margin: "32px auto" }}>
           <Jodit
             contentValue={form.data.editorContent}

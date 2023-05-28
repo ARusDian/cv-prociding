@@ -28,15 +28,15 @@ const Edit = ({ id, publicationOpportunity }: Props) => {
 
   const submitHandler = () => {
     form.clearErrors();
-    console.log(route('pub.put', id));
-    form.put(route('pub.put', id), {
+    console.log(route('pub.update', id));
+    form.put(route('pub.update', id), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),
     })
 };
 
   const deleteHandler = () => {
-    form.delete(route('pub.delete', id));
+    form.delete(route('pub.destroy', id));
   }
 
   return (
