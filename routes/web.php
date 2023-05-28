@@ -1,7 +1,8 @@
 <?php
 
 use App\Actions\Fortify\UserProfileController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeHeaderContentController;
+use App\Http\Controllers\MainHomeContentController;
 use App\Http\Controllers\ProgramCommitteController;
 use App\Http\Controllers\PublicationOpportunityController;
 use App\Http\Controllers\ScientificReviewController;
@@ -44,6 +45,10 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/', function () {
         return Inertia::render("Admin/Dashboard");
     })->name("dashboard.index");
+
+    Route::get('/home', [MainHomeContentController::class, 'index'])->name("home.index");
+    Route::post("/home/header/create", [HomeHeaderContentController::class, "store"])->name("home.header.store");
+    Route::put("/home/header/:id", [HomeHeaderContentController::class, "update"])->name("home.header.update");
 
     Route::get('/publication-opportunity', [PublicationOpportunityController::class, 'index'])->name('pub.home');
     Route::get('/publication-opportunity/create', [PublicationOpportunityController::class, 'createPage'])->name("pub.create");

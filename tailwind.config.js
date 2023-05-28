@@ -11,6 +11,7 @@ module.exports = {
         // './resources/js/Pages/Admin/PublicationOpportunity/Index.tsx',
         './resources/js/Layouts/**/*.tsx',
         './resources/js/Pages/**/*.tsx',
+        "./resources/js/Pages/Admin/HomeContent/Index.tsx"
     ],
 
     theme: {

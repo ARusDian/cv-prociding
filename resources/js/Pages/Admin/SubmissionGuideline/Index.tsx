@@ -9,6 +9,7 @@ interface Props {
   contents: [{
     id: number,
     created_at: Date,
+    content: string,
     is_active: boolean,
   }]
   // success?: string
