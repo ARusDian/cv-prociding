@@ -18,9 +18,9 @@ const MasterLayoutCSS = ({ children, active }: Props) => {
 
   return (
     <div>
-      <nav id='navbar'>
+      <nav id='navbar' className='z-50'>
         <div className="nav-wrapper font-roboto text-center" style={{ color: "white" }}>
-          <InertiaLink href="/home" style={{ color: "black", textDecoration: "none", fontWeight: "bold", fontSize: "20px" }}>CV-Prociding</InertiaLink>
+          <InertiaLink href="/" style={{ color: "black", textDecoration: "none", fontWeight: "bold", fontSize: "20px" }}>CV-Prociding</InertiaLink>
           <div style={{ display: "flex", flexDirection: "row", gap: "4px" }}>
             <a className={'link-button ' + (activeState === "home" && "active")} href={"/"}>Home</a>
             <a className={'link-button ' + (activeState === "proc" && "active")} href={route("proc.index")} >Program Committe</a>

@@ -8,7 +8,9 @@ interface Props {
 }
 
 
-const  DashboardAdminTailwind = ({ children }: Props) => {
+const DashboardAdminTailwind = ({ children }: Props) => {
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+
   document.body.classList.add("bg-[#f0f0f0]");
   return (
     <div>
@@ -19,13 +21,23 @@ const  DashboardAdminTailwind = ({ children }: Props) => {
               CV-Providing
             </InertiaLink>
           </p>
-        </div> 
+        </div>
       </div>
       <div className="fixed top-0 left-0 h-screen flex justify-center w-64 bg-green-600 Z-0">
         <div className="mt-20 w-11/12 text-white">
           <ul className="flex flex-col gap-2 font-roboto">
-            <InertiaLink href={route("dashboard.index")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Dashboard</InertiaLink>
-            <InertiaLink href={route("home.index")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Home Content</InertiaLink>
+            <InertiaLink href={route("dashboard")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Dashboard</InertiaLink>
+            <div className="px-5 py-2 rounded-xl hover:bg-[#FFA500] cursor-pointer" onClick={() => setDropdownOpen(prev => !prev)}>Home Content</div>
+            {dropdownOpen && (
+              <div className="flex flex-col gap-2 pl-4">
+                <InertiaLink href={route("home.header.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Header</InertiaLink>
+                {/* <InertiaLink href={route("home.keynote")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Keynote</InertiaLink>
+                <InertiaLink href={route("home.gallery")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Gallery</InertiaLink>
+                <InertiaLink href={route("home.poster")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Poster</InertiaLink>
+                <InertiaLink href={route("home.publication")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Publication</InertiaLink>
+                <InertiaLink href={route("home.support")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Support</InertiaLink> */}
+              </div>
+            )}
             <InertiaLink href={route("proc.home")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Program Committe</InertiaLink>
             <InertiaLink href={route("pub.home")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Publication Opportunity</InertiaLink>
             <InertiaLink href={route("sci-rev.home")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Scientific Review</InertiaLink>

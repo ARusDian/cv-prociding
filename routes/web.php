@@ -2,7 +2,7 @@
 
 use App\Actions\Fortify\UserProfileController;
 use App\Http\Controllers\HomeHeaderContentController;
-use App\Http\Controllers\MainHomeContentController;
+use App\Http\Controllers\HomeKeynoteContentController;
 use App\Http\Controllers\ProgramCommitteController;
 use App\Http\Controllers\PublicationOpportunityController;
 use App\Http\Controllers\ScientificReviewController;
@@ -44,11 +44,15 @@ Route::get('/submission-guideline', [SubmissionGuidelineController::class, "home
 Route::prefix('dashboard')->group(function () {
     Route::get('/', function () {
         return Inertia::render("Admin/Dashboard");
-    })->name("dashboard.index");
+    })->name("dashboard");
 
-    Route::get('/home', [MainHomeContentController::class, 'index'])->name("home.index");
+    Route::get('/home/header', [HomeHeaderContentController::class, 'show'])->name("home.header.show");
     Route::post("/home/header/create", [HomeHeaderContentController::class, "store"])->name("home.header.store");
-    Route::put("/home/header/:id", [HomeHeaderContentController::class, "update"])->name("home.header.update");
+    Route::put("/home/header/{homeHeader}", [HomeHeaderContentController::class, "update"])->name("home.header.update");
+
+    Route::get('/home/keynote', [HomeKeynoteContentController::class, 'show'])->name("home.keynote.show");
+    Route::post("/home/keynote/create", [HomeKeynoteContentController::class, "store"])->name("home.keynote.store");
+    Route::put("/home/keynote/{homeHeader}", [HomeKeynoteContentController::class, "update"])->name("home.keynote.update");
 
     Route::get('/publication-opportunity', [PublicationOpportunityController::class, 'index'])->name('pub.home');
     Route::get('/publication-opportunity/create', [PublicationOpportunityController::class, 'createPage'])->name("pub.create");
