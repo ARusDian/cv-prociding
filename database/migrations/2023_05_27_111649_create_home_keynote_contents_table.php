@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('img_path')->nullable(false);
             $table->string('name')->nullable(false);
             $table->string('title')->nullable(false);
-            $table->string('university')->nullable(false);
+            $table->string('affiliation')->nullable(false);
             $table->unsignedInteger('rank')->nullable(false);
             $table->timestamps();
         });

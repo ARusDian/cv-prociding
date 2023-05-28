@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeKeynoteContent;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class HomeKeynoteContentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function show()
     {
-        //
+        $keynotes = HomeKeynoteContent::all()->first();
+        return Inertia::render('Admin/HomeContent/Keynote', [
+        'keynotes' => $keynotes ? $keynotes : [],
+        ]);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -34,10 +37,6 @@ class HomeKeynoteContentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(HomeKeynoteContent $homeKeynoteContent)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

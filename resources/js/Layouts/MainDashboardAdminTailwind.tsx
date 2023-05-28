@@ -31,8 +31,8 @@ const DashboardAdminTailwind = ({ children }: Props) => {
             {dropdownOpen && (
               <div className="flex flex-col gap-2 pl-4">
                 <InertiaLink href={route("home.header.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Header</InertiaLink>
-                {/* <InertiaLink href={route("home.keynote")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Keynote</InertiaLink>
-                <InertiaLink href={route("home.gallery")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Gallery</InertiaLink>
+                <InertiaLink href={route("home.keynote.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Keynote</InertiaLink>
+                {/* <InertiaLink href={route("home.gallery")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Gallery</InertiaLink>
                 <InertiaLink href={route("home.poster")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Poster</InertiaLink>
                 <InertiaLink href={route("home.publication")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Publication</InertiaLink>
                 <InertiaLink href={route("home.support")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Support</InertiaLink> */}

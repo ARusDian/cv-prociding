@@ -1,5 +1,5 @@
-import { InertiaFormProps, useForm } from '@inertiajs/inertia-react'
-import React, { useEffect } from 'react'
+import { useForm } from '@inertiajs/inertia-react'
+import React from 'react'
 import route from 'ziggy-js'
 import { IHomeHeader, IHomeHeaderForm } from '@/Models/Home'
 import MainDashboardAdminTailwind from '@/Layouts/MainDashboardAdminTailwind'

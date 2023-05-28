@@ -15,8 +15,12 @@ export interface IHomeKeynote {
   img_path: string,
   name: string,
   title: string,
-  university: string,
+  affiliation: string,
   rank: number
+}
+
+export interface IHomeKeynoteForm extends IHomeKeynote {
+  input_img: File | string,
 }
 
 export interface IHomeGallery {
