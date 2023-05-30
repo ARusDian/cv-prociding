@@ -12,6 +12,7 @@ class HomeHeaderContent extends Model
     protected $guarded = [];
 
     protected $fillable = [
+        "background_image_path",
         "date_stamp",
         "logo_path",
         "title",

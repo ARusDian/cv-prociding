@@ -1,5 +1,6 @@
 export interface IHomeHeader {
   id: number,
+  background_image_path: string,
   logo_path: string,
   date_stamp: string,
   title: string,
@@ -8,6 +9,7 @@ export interface IHomeHeader {
 
 export interface IHomeHeaderForm extends IHomeHeader {
   input_logo_path: File | string,
+  input_background_image: File | string,
 }
 
 export interface IHomeKeynote {

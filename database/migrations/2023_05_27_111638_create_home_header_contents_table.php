@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('home_header_contents', function (Blueprint $table) {
             $table->id();
+            $table->string('background_image_path')->nullable(false);
             $table->string('logo_path')->nullable(false);
             $table->date('date_stamp')->nullable(false);
             $table->string('title')->nullable(false);

@@ -21,18 +21,26 @@ class HomeHeaderContentController extends Controller
   {
     $request->validate([
       'date_stamp' => 'required',
-      'input_logo_path' => 'required',
       'title' => 'required',
       'subtitle' => 'required',
+      'input_background_image' => 'required|image|mimes:jpeg,png,jpg',
+      'input_logo_path' => 'required|image|mimes:jpeg,png,jpg',
     ]);
+
     $logo = $request->file('input_logo_path');
     $logoName = md5(rand(1, 10)) . '.' . $logo->getClientOriginalExtension();
-    $logoPath = 'home/' . $logoName;
+    $logoPath = 'home/header/' . $logoName;
     Storage::disk('public')->put($logoPath, $logo->getContent());
+
+    $backgroundImage = $request->file('input_background_image');
+    $backgroundImageName = md5(rand(1, 10)) . '.' . $backgroundImage->getClientOriginalExtension();
+    $backgroundImagePath = 'home/header/' . $backgroundImageName;
+    Storage::disk('public')->put($backgroundImagePath, $backgroundImage->getContent());
 
     HomeHeaderContent::create([
       'date_stamp' => $request->date_stamp,
       'logo_path' => url('/') . '/' . 'storage/' . $logoPath,
+      'background_image_path' => url('/') . '/' . 'storage/' . $backgroundImagePath,
       'title' => $request->title,
       'subtitle' => $request->subtitle,
     ]);
@@ -50,9 +58,22 @@ class HomeHeaderContentController extends Controller
 
       $logo = $request->file('input_logo_path');
       $logoName = md5(rand(1, 10)) . '.' . $logo->getClientOriginalExtension();
-      $logoPath = 'home/' . $logoName;
+      $logoPath = 'home/header/' . $logoName;
       Storage::disk('public')->put($logoPath, $logo->getContent());
       $homeHeader->logo_path = url('/') . '/' . 'storage/' . $logoPath;
+    }
+
+    $currentBackgroundImagePath = '';
+    if ($request->background_image_path != $request->input_background_image) {
+      $currentBackgroundImagePath = explode('storage/', $request->background_image_path);
+      $currentBackgroundImagePath = $currentBackgroundImagePath[1];
+      Storage::disk('public')->delete($currentBackgroundImagePath);
+
+      $backgroundImage = $request->file('input_background_image');
+      $backgroundImageName = md5(rand(1, 10)) . '.' . $backgroundImage->getClientOriginalExtension();
+      $backgroundImagePath = 'home/header/' . $backgroundImageName;
+      Storage::disk('public')->put($backgroundImagePath, $backgroundImage->getContent());
+      $homeHeader->background_image_path = url('/') . '/' . 'storage/' . $backgroundImagePath;
     }
 
     $homeHeader->update([
