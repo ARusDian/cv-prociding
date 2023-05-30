@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('home_keynote_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('img_path')->nullable(false);
+            $table->string('img_path')->nullable(true);
             $table->string('name')->nullable(false);
             $table->string('title')->nullable(false);
             $table->string('affiliation')->nullable(false);

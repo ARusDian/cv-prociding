@@ -25,7 +25,6 @@ class HomeHeaderContentController extends Controller
       'title' => 'required',
       'subtitle' => 'required',
     ]);
-
     $logo = $request->file('input_logo_path');
     $logoName = md5(rand(1, 10)) . '.' . $logo->getClientOriginalExtension();
     $logoPath = 'home/' . $logoName;
