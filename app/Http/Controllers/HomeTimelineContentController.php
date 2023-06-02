@@ -11,8 +11,8 @@ class HomeTimelineContentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() {
-        return Inertia::render("Admin/HomeContent/HomeTimelineContent");
+    public function show() {
+        return Inertia::render("Admin/HomeContent/Timeline");
     }
 
     /**
@@ -26,7 +26,7 @@ class HomeTimelineContentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, HomeTimelineContent $homePosterContent)
+    public function update(Request $request, HomeTimelineContent $timeline)
     {
         //
     }
@@ -34,7 +34,7 @@ class HomeTimelineContentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(HomeTimelineContent $homePosterContent)
+    public function destroy(HomeTimelineContent $timeline)
     {
         //
     }

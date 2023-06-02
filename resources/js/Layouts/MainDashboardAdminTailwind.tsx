@@ -10,8 +10,8 @@ interface Props {
 
 const DashboardAdminTailwind = ({ children }: Props) => {
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
-
   document.body.classList.add("bg-[#f0f0f0]");
+  
   return (
     <div>
       <div className="fixed top-0 left-0 flex flex-row items-center w-full bg-green-600 h-16 z-10 shadow-sm">
@@ -40,8 +40,8 @@ const DashboardAdminTailwind = ({ children }: Props) => {
                 <InertiaLink href={route("home.header.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Header</InertiaLink>
                 <InertiaLink href={route("home.keynote.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Keynote</InertiaLink>
                 <InertiaLink href={route("home.gallery.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Gallery</InertiaLink>
-                {/* <InertiaLink href={route("home.poster")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Poster</InertiaLink>
-                <InertiaLink href={route("home.publication")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Publication</InertiaLink>
+                <InertiaLink href={route("home.timeline.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Timeline</InertiaLink>
+                {/* <InertiaLink href={route("home.publication")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Publication</InertiaLink>
                 <InertiaLink href={route("home.support")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Support</InertiaLink> */}
               </div>
             )}
