@@ -22,9 +22,6 @@ const Keynote = ({ keynotes }: Props) => {
   const [error, setError] = useState<string[]>([]);
 
   const addKeynote = () => {
-    if (keynotesForm.data.length >= 6) {
-      return;
-    }
     const newID = keynotesForm.data.length > 0 ? keynotesForm.data[keynotesForm.data.length - 1].id + 1 : 1;
     keynotesForm.setData((data) => [
       ...data,

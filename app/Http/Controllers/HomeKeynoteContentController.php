@@ -63,11 +63,17 @@ class HomeKeynoteContentController extends Controller
             md5(rand(1, 10)) . '.' . $inputImg->getClientOriginalExtension();
           $inputImgPath = 'home/keynote/' . $inputImgName;
           Storage::disk('public')->put($inputImgPath, $inputImg->getContent());
-          $keynote['img_path'] = $inputImgPath;
+          // $keynote['img_path'] = $inputImgPath;
           $newImg = $inputImgPath;
         }
 
         if (in_array($keynote['id'], $existingKeynotes->pluck('id')->toArray())) {
+          if ($newImg) {
+            $existingKeynoteImage = explode('storage/', $keynote['img_path']);
+            $existingKeynoteImage = $existingKeynoteImage[1];
+            Storage::disk('public')->delete($existingKeynoteImage);
+          }
+
           HomeKeynoteContent::where('id', $keynote['id'])->update([
             'title' => $keynote['title'],
             'name' => $keynote['name'],
@@ -86,7 +92,7 @@ class HomeKeynoteContentController extends Controller
           'name' => $keynote['name'],
           'affiliation' => $keynote['affiliation'],
           'rank' => $keynote['rank'],
-          'img_path' => $keynote['img_path'] ? url('/') . '/' . 'storage/' . $keynote['img_path'] : null,
+          'img_path' => $newImg ? url('/') . '/' . 'storage/' . $newImg : null,
         ]);
       }
     });
