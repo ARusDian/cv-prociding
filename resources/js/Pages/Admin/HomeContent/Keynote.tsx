@@ -76,7 +76,7 @@ const Keynote = ({ keynotes }: Props) => {
       <div className="overflow-hidden font-roboto flex flex-col gap-4 mt-4 px-2">
         <div className="flex flex-row items-center gap-3">
           <h1 className='font-bold text-3xl'>Keynote</h1>
-          <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' onClick={submitAddNote}>Simpan</button>
+          <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' onClick={submitAddNote}>Save</button>
           <button className='bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full' onClick={addKeynote}>+</button>
           <div className="flex flex-col text-xs">
             {error.length > 0 && error.map(err => (

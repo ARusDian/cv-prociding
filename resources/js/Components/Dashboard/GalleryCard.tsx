@@ -21,7 +21,7 @@ const GalleryCard = () => {
       <div className="w-full h-64 bg-red-200 rounded-b-xl">
         <FileUploader children={dropZoneStyle} onDrop={onDragOrDropHandler} onSelect={onDragOrDropHandler} />
         <div className="h-[20%] flex flex-row justify-center items-center gap-5 text-sm">
-          <button className='px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 hover:text-white'>Simpan</button>
+          <button className='px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 hover:text-white'>Save</button>
           <button className='px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 hover:text-white'>Hapus</button>
         </div>
       </div>

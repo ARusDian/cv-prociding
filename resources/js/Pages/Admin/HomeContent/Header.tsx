@@ -117,7 +117,7 @@ const Header = ({ header }: Props) => {
             </div>
             <div className="flex flex-row items-center gap-3">
               {!loading ? (
-                <button className={'px-4 py-2 bg-green-500 rounded-lg text-slate-100 border border-green-600 hover:opacity-80 duration-300 ease-out '} onClick={headSubmit}>Simpan</button>
+                <button className={'px-4 py-2 bg-green-500 rounded-lg text-slate-100 border border-green-600 hover:opacity-80 duration-300 ease-out '} onClick={headSubmit}>Save</button>
               ) : (
                 <button className='px-4 py-2 bg-green-500 rounded-lg text-slate-100 border border-green-600 hover:opacity-80 duration-300 ease-out' disabled>Loading...</button>
               )}
