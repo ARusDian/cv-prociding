@@ -30,7 +30,6 @@ const Edit = ({ id, programCommitte }: Props) => {
 
   const submitHandler = () => {
     form.clearErrors();
-    console.log(route('proc.put', id));
     form.put(route('proc.put', id), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),

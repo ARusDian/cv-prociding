@@ -29,7 +29,6 @@ const Edit = ({ id, submissionGuideline }: Props) => {
 
   const submitHandler = () => {
     form.clearErrors();
-    console.log(route('sub.update', id));
     form.put(route('sub.update', id), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),

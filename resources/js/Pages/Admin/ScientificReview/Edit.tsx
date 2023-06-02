@@ -28,7 +28,6 @@ const Edit = ({ id, scientificReview }: Props) => {
 
   const submitHandler = () => {
     form.clearErrors();
-    console.log(route('sci-rev.update', id));
     form.put(route('sci-rev.update', id), {
       onError: (err) => console.log(err),
       onSuccess: () => console.log("success"),

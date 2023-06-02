@@ -23,7 +23,6 @@ export default function Create(props: Props) {
     );
 
     function onSubmit(e: React.FormEvent) {
-        console.log(form.data);
         e.preventDefault();
         form.clearErrors();
         form.post(route('user.store'), {
