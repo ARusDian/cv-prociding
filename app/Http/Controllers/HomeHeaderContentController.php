@@ -28,12 +28,12 @@ class HomeHeaderContentController extends Controller
     ]);
 
     $logo = $request->file('input_logo_path');
-    $logoName = md5(rand(1, 10)) . '.' . $logo->getClientOriginalExtension();
+    $logoName = md5($logo->getClientOriginalName() . random_bytes(4)) . '.' . $logo->getClientOriginalExtension();
     $logoPath = 'home/header/' . $logoName;
     Storage::disk('public')->put($logoPath, $logo->getContent());
 
     $backgroundImage = $request->file('input_background_image');
-    $backgroundImageName = md5(rand(1, 10)) . '.' . $backgroundImage->getClientOriginalExtension();
+    $backgroundImageName = md5($backgroundImage->getClientOriginalName() . random_bytes(4)) . '.' . $backgroundImage->getClientOriginalExtension();
     $backgroundImagePath = 'home/header/' . $backgroundImageName;
     Storage::disk('public')->put($backgroundImagePath, $backgroundImage->getContent());
 
@@ -57,7 +57,7 @@ class HomeHeaderContentController extends Controller
       Storage::disk('public')->delete($currentLogoPath);
 
       $logo = $request->file('input_logo_path');
-      $logoName = md5(rand(1, 10)) . '.' . $logo->getClientOriginalExtension();
+      $logoName = md5($logo->getClientOriginalName() . random_bytes(4)) . '.' . $logo->getClientOriginalExtension();
       $logoPath = 'home/header/' . $logoName;
       Storage::disk('public')->put($logoPath, $logo->getContent());
       $homeHeader->logo_path = url('/') . '/' . 'storage/' . $logoPath;
@@ -70,7 +70,7 @@ class HomeHeaderContentController extends Controller
       Storage::disk('public')->delete($currentBackgroundImagePath);
 
       $backgroundImage = $request->file('input_background_image');
-      $backgroundImageName = md5(rand(1, 10)) . '.' . $backgroundImage->getClientOriginalExtension();
+      $backgroundImageName = md5($backgroundImage->getClientOriginalName() . random_bytes(4)) . '.' . $backgroundImage->getClientOriginalExtension();
       $backgroundImagePath = 'home/header/' . $backgroundImageName;
       Storage::disk('public')->put($backgroundImagePath, $backgroundImage->getContent());
       $homeHeader->background_image_path = url('/') . '/' . 'storage/' . $backgroundImagePath;
@@ -84,10 +84,5 @@ class HomeHeaderContentController extends Controller
 
     $homeHeader->save();
     return redirect()->route('home.keynote.show');
-  }
-
-  public function destroy(HomeHeaderContent $homeHeadeContent)
-  {
-    //
   }
 }

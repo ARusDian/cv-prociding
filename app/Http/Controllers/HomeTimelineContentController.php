@@ -26,7 +26,7 @@ class HomeTimelineContentController extends Controller
         ]);
 
         $image = $request->file('img');
-        $imagePath = 'home/timeline/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
+        $imagePath = 'home/timeline/' . md5($image->getClientOriginalName() . random_bytes(4)) . '.' . $image->getClientOriginalExtension();
         Storage::disk('public')->put($imagePath, $image->getContent());
 
         HomeTimelineContent::create([
@@ -49,7 +49,7 @@ class HomeTimelineContentController extends Controller
         Storage::disk('public')->delete($toBeDeletedPath);
 
         $image = $request->file('img');
-        $imagePath = 'home/timeline/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
+        $imagePath = 'home/timeline/' . md5($image->getClientOriginalName() . random_bytes(4)) . '.' . $image->getClientOriginalExtension();
         Storage::disk('public')->put($imagePath, $image->getContent());
 
         $timeline->update([

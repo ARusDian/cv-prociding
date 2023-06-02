@@ -60,7 +60,7 @@ class HomeKeynoteContentController extends Controller
         if (!empty($keynote['input_img'])) {
           $inputImg = $keynote['input_img'];
           $inputImgName =
-            md5(rand(1, 10)) . '.' . $inputImg->getClientOriginalExtension();
+            md5($inputImg->getClientOriginalName() . random_bytes(4)) . '.' . $inputImg->getClientOriginalExtension();
           $inputImgPath = 'home/keynote/' . $inputImgName;
           Storage::disk('public')->put($inputImgPath, $inputImg->getContent());
           // $keynote['img_path'] = $inputImgPath;

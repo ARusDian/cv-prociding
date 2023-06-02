@@ -26,7 +26,7 @@ class HomeGalleryContentController extends Controller
         ]);
 
         $image = $request->file('img');
-        $imagePath = 'home/gallery/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
+        $imagePath = 'home/gallery/' . md5($image->getClientOriginalName() . random_bytes(4)) . '.' . $image->getClientOriginalExtension();
         Storage::disk('public')->put($imagePath, $image->getContent());
 
         HomeGalleryContent::create([
@@ -49,7 +49,7 @@ class HomeGalleryContentController extends Controller
         Storage::disk('public')->delete($toBeDeletedPath);
 
         $image = $request->file('img');
-        $imagePath = 'home/gallery/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
+        $imagePath = 'home/gallery/' . md5($image->getClientOriginalName() . random_bytes(4)) . '.' . $image->getClientOriginalExtension();
         Storage::disk('public')->put($imagePath, $image->getContent());
 
         $gallery->update([

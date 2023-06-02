@@ -25,7 +25,7 @@ class HomePublicationContentController extends Controller
         ]);
 
         $image = $request->file('img');
-        $imagePath = 'home/publication/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
+        $imagePath = 'home/publication/' . md5($image->getClientOriginalName() . random_bytes(4)) . '.' . $image->getClientOriginalExtension();
         Storage::disk('public')->put($imagePath, $image->getContent());
 
         HomePublicationContent::create([
@@ -41,7 +41,7 @@ class HomePublicationContentController extends Controller
         $imagePath = "";
         if ($request->hasFile('img')){
             $image = $request->file('img');
-            $imagePath = 'home/publication/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
+            $imagePath = 'home/publication/' . md5($image->getClientOriginalName() . random_bytes(4)) . '.' . $image->getClientOriginalExtension();
             Storage::disk('public')->put($imagePath, $image->getContent());
             
             $toBeDeletedPath = $publication->cover_img_path;
