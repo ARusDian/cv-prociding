@@ -21,7 +21,7 @@ class HomePublicationContentController extends Controller
     {
         $request->validate([
             'img' => 'required',
-            'link_to' => 'required',
+            'linkTo' => 'required',
         ]);
 
         $image = $request->file('img');
@@ -30,24 +30,28 @@ class HomePublicationContentController extends Controller
 
         HomePublicationContent::create([
             'cover_img_path' => url('/') . '/' . 'storage/' . $imagePath,
+            'link_to' => $request->linkTo,
         ]);
 
-        return redirect()->route('home.publication.show')->with("success", "Timeline created successfully");
+        return redirect()->route('home.publication.show');
     }
 
     public function update(Request $request, HomePublicationContent $publication)
     {
-        $toBeDeletedPath = $publication->cover_img_path;
-        $toBeDeletedPath = explode('storage/', $toBeDeletedPath)[1];
-        Storage::disk('public')->delete($toBeDeletedPath);
-
-        $image = $request->file('img');
-        $imagePath = 'home/publication/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
-        Storage::disk('public')->put($imagePath, $image->getContent());
+        $imagePath = "";
+        if ($request->hasFile('img')){
+            $image = $request->file('img');
+            $imagePath = 'home/publication/' . md5(rand(1,10)) . '.' . $image->getClientOriginalExtension();
+            Storage::disk('public')->put($imagePath, $image->getContent());
+            
+            $toBeDeletedPath = $publication->cover_img_path;
+            $toBeDeletedPath = explode('storage/', $toBeDeletedPath)[1];
+            Storage::disk('public')->delete($toBeDeletedPath);
+        }
 
         $publication->update([
-            'cover_img_path' => url('/') . '/' . 'storage/' . $imagePath,
-            'link_to' => $request->link_to ? $request->link_to : $publication->link_to,
+            'cover_img_path' => $imagePath ? url('/') . '/' . 'storage/' . $imagePath : $publication->cover_img_path,
+            'link_to' => $request->linkTo ? $request->linkTo : $publication->link_to,
         ]);
         $publication->save();
 

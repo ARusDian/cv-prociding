@@ -40,6 +40,11 @@ export interface IHomePublication {
   link_to: string,
 }
 
+export interface IHomePublicationForm {
+  img: File | string,
+  linkTo: string,
+}
+
 export interface IHomeSupport {
   id: number,
   img_path: string,

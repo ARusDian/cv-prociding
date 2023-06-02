@@ -3,7 +3,7 @@ import MainDashboardAdminTailwind from '@/Layouts/MainDashboardAdminTailwind'
 import MaterialReactTable from "material-react-table";
 import { useForm } from '@inertiajs/inertia-react';
 import route from 'ziggy-js';
-import { IHomePublication } from '@/Models/Home';
+import { IHomePublication, IHomePublicationForm } from '@/Models/Home';
 import { Dialog, DialogContent } from "@mui/material";
 
 interface Props {
@@ -11,16 +11,18 @@ interface Props {
 }
 
 const Publication = ({ publications }: Props) => {
-  const imageForm = useForm<{ img: File | string }>({
-    img: ""
-  });
-  const editImageForm = useForm<{ img: File | string }>({
+  const publicationForm = useForm<IHomePublicationForm>({
     img: "",
+    linkTo: "",
+  });
+  const editPublicationForm = useForm<IHomePublicationForm>({
+    img: "",
+    linkTo: "",
   });
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [enabled, setEnabled] = useState<boolean>(false);
+  const [createOpenToggle, setCreateOpenToggle] = useState<boolean>(false);
   const [editOpenToggle, setEditOpenToggle] = useState<boolean>(false);
   const [deleteOpenToggle, setDeleteOpenToggle] = useState<boolean>(false);
   const [currentEditedId, setCurrentEditedId] = useState<number | undefined>(undefined);
@@ -31,7 +33,8 @@ const Publication = ({ publications }: Props) => {
   ];
 
   const onSubmitHandler = () => {
-    imageForm.post(route('home.publication.store'), {
+    setCreateOpenToggle(prev => !prev);
+    publicationForm.post(route('home.publication.store'), {
       onProgress: () => setLoading(true),
       onSuccess: () => {
         setLoading(false)
@@ -47,8 +50,8 @@ const Publication = ({ publications }: Props) => {
   const onEditHandler = (id: number) => {
     setEditOpenToggle(prev => !prev);
     //@ts-ignore
-    editImageForm.data._method = 'PUT';
-    editImageForm.post(route('home.publication.update', id), {
+    editPublicationForm.data._method = 'PUT';
+    editPublicationForm.post(route('home.publication.update', id), {
       onProgress: () => setLoading(true),
       onSuccess: () => {
         setLoading(false);
@@ -63,7 +66,7 @@ const Publication = ({ publications }: Props) => {
 
   const onDeleteHandler = (id: number) => {
     setDeleteOpenToggle(prev => !prev);
-    imageForm.delete(route('home.publication.destroy', id), {
+    publicationForm.delete(route('home.publication.destroy', id), {
       onProgress: () => setLoading(true),
       onSuccess: () => {
         setLoading(false);
@@ -78,24 +81,20 @@ const Publication = ({ publications }: Props) => {
 
   return (
     <MainDashboardAdminTailwind>
-      <Dialog open={editOpenToggle} onClose={() => {
-        setEditOpenToggle(prev => !prev)
-        setCurrentEditedId(undefined)
-      }}>
-        <DialogContent className='w-[600px] h-[500px] '>
+      <Dialog open={editOpenToggle} onClose={() => setEditOpenToggle(prev => !prev)} maxWidth='lg'>
+        <DialogContent className='w-[1000px] h-[900px] max-w-6xl'>
           <div className="flex flex-col justify-start gap-5">
-            <h1 className='text-2xl font-bold'>Edit</h1>
-            <div className="flex flex-row items-center justify-between">
-              <input type="file" name='img' className="rounded-lg w-[70%] border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
-                editImageForm.setData("img", e.target.files![0]);
+            <h1 className='text-2xl font-bold'>Add</h1>
+            <div className="flex flex-row items-center justify-between gap-6">
+              <input type="file" name='img' className="rounded-lg w-full border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
+                editPublicationForm.setData("img", e.target.files![0]);
                 setPreview(URL.createObjectURL(e.target.files![0]));
               }} />
-              <button className='px-3 py-2 w-[25%] bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={() => {
-                onEditHandler(currentEditedId!)
-              }} >Simpan Foto</button>
+              <input type="text" name="linkTo" className='rounded-lg w-full border border-green-900' placeholder='Link to... e.g https://drive.google.com' onChange={(e) => {editPublicationForm.setData("linkTo", e.target.value)}}/>
+              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={() => onEditHandler(currentEditedId!)}>Submit</button>
             </div>
-            <div className="h-80 w-full border border-green-200">
-              {editImageForm.data.img ?
+            <div className="h-[740px] w-full border border-green-200">
+              {editPublicationForm.data.img ?
                 (
                   <img src={preview} alt="" className='object-contain h-full w-full' />
                 ) : (
@@ -107,12 +106,38 @@ const Publication = ({ publications }: Props) => {
           </div>
         </DialogContent>
       </Dialog>
+      <Dialog open={createOpenToggle} onClose={() => setCreateOpenToggle(prev => !prev)} maxWidth='lg'>
+        <DialogContent className='w-[1000px] h-[900px] max-w-6xl'>
+          <div className="flex flex-col justify-start gap-5">
+            <h1 className='text-2xl font-bold'>Add</h1>
+            <div className="flex flex-row items-center justify-between gap-6">
+              <input type="file" name='img' className="rounded-lg w-full border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
+                publicationForm.setData("img", e.target.files![0]);
+                setPreview(URL.createObjectURL(e.target.files![0]));
+              }} />
+              <input type="text" name="linkTo" className='rounded-lg w-full border border-green-900' placeholder='Link to... e.g https://drive.google.com' onChange={(e) => {publicationForm.setData("linkTo", e.target.value)}}/>
+              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={onSubmitHandler}>Submit</button>
+            </div>
+            <div className="h-[740px] w-full border border-green-200">
+              {publicationForm.data.img ?
+                (
+                  <img src={preview} alt="" className='object-contain h-full w-full' />
+                ) : (
+                  <div className="flex flex-col justify-center items-center h-full">
+                    <p>Image will be shown here...</p>
+                  </div>
+                )}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+      
       <Dialog open={deleteOpenToggle} onClose={() => {
         setDeleteOpenToggle(prev => !prev)
         setCurrentEditedId(undefined)
       }}>
         <DialogContent className='w-[400px] h-[200px] flex flex-col justify-center items-center gap-4'>
-          <h1 className='text-2xl font-bold text-center'>Are you sure want to delete this image?</h1>
+          <h1 className='text-2xl font-bold text-center'>Are you sure want to delete this data?</h1>
           <div className="flex flex-row justify-center items-center w-full gap-4">
             <button className='px-4 py-2 w-[25%] bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={() => onDeleteHandler(currentEditedId!)} >Yes</button>
             <button className='px-4 py-2 w-[25%] bg-red-500 rounded-lg font-bold text-white hover:bg-red-600' onClick={() => {
@@ -138,15 +163,7 @@ const Publication = ({ publications }: Props) => {
           </div>
           {error && (<div className="text-red-500">{error}</div>)}
           <div className='flex flex-row gap-4'>
-            <input type="file" name='img' className="rounded-lg w-96 border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
-              imageForm.setData("img", e.target.files![0])
-              setEnabled(true)
-            }} />
-            {!enabled ?
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white cursor-not-allowed' onClick={onSubmitHandler} disabled>Tambah Foto</button>
-              :
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white' onClick={onSubmitHandler} >Tambah Foto</button>
-            }
+            <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white' onClick={() => setCreateOpenToggle(prev => !prev)} >Add Publication</button>
           </div>
         </div>
         <hr className='border-b border-b-black' />
