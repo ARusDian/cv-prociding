@@ -45,7 +45,7 @@ class ScientificReviewController extends Controller
     $submittedImagesPath = [];
     foreach($availableImages as $image) {
       $newImage = str_replace('"', '', $image);
-      $newImage = str_replace('data:image/png;base64,', '', $newImage);
+      $newImage = preg_replace('/^data:image\/(png|jpeg|jpg);base64,/', '', $newImage);;
       $newImage = str_replace(' ', '+', $newImage);
       $imageName = md5(rand(1, 10) . random_bytes(4)).'.png';
       Storage::disk('public')->put('scientific_review/'.$imageName, base64_decode($newImage));
@@ -114,7 +114,7 @@ class ScientificReviewController extends Controller
       $submittedImagesPath = [];
       foreach($availableImages as $image) {
         $newImage = str_replace('"', '', $image);
-        $newImage = str_replace('data:image/png;base64,', '', $newImage);
+        $newImage = preg_replace('/^data:image\/(png|jpeg|jpg);base64,/', '', $newImage);;
         $newImage = str_replace(' ', '+', $newImage);
         $imageName = md5(rand(1, 10) . random_bytes(4)).'.png';
         Storage::disk('public')->put('scientific_review/'.$imageName, base64_decode($newImage));
