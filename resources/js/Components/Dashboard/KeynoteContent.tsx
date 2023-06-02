@@ -15,7 +15,7 @@ const KeynoteContent = ({ keynotes, removeKeynote, updateKeynoteValue }: Props) 
     <div className="flex flex-row gap-2 h-72">
       <div className="flex flex-col items-start justify-around gap-2 mb-8 h-full">
         <div className="flex flex-row items-center gap-3 text-sm">
-          <p className='w-[70px]'>Foto : </p>
+          <p className='w-[70px]'>Photo : </p>
           <input type="file" name='img' className="rounded-lg w-56 border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
             updateKeynoteValue(keynotes.id, 'input_img', e.target.files![0])
             setPreviewImage(URL.createObjectURL(e.target?.files![0]));

@@ -92,7 +92,7 @@ const Supported = ({ supports }: Props) => {
               }} />
               <button className='px-3 py-2 w-[25%] bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={() => {
                 onEditHandler(currentEditedId!)
-              }} >Save Foto</button>
+              }} >Save Photo</button>
             </div>
             <div className="h-80 w-full border border-green-200">
               {editImageForm.data.img ?
