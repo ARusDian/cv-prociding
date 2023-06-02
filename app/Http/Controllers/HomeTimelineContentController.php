@@ -4,45 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeTimelineContent;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class HomeTimelineContentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function index() {
+        return Inertia::render("Admin/HomeContent/HomeTimelineContent");
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(HomeTimelineContent $homePosterContent)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(HomeTimelineContent $homePosterContent)
     {
         //
     }

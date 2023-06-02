@@ -4,6 +4,7 @@ use App\Actions\Fortify\UserProfileController;
 use App\Http\Controllers\HomeGalleryContentController;
 use App\Http\Controllers\HomeHeaderContentController;
 use App\Http\Controllers\HomeKeynoteContentController;
+use App\Http\Controllers\HomeTimelineContentController;
 use App\Http\Controllers\ProgramCommitteController;
 use App\Http\Controllers\PublicationOpportunityController;
 use App\Http\Controllers\ScientificReviewController;
@@ -59,6 +60,11 @@ Route::prefix('dashboard')->group(function () {
     Route::post("/home/gallery/create", [HomeGalleryContentController::class, "store"])->name("home.gallery.store");
     Route::put("/home/gallery/{gallery}", [HomeGalleryContentController::class, "update"])->name("home.gallery.update");
     Route::delete("/home/gallery/{gallery}", [HomeGalleryContentController::class, "destroy"])->name("home.gallery.destroy");
+
+    Route::get('/home/timeline', [HomeTimelineContentController::class, 'show'])->name("home.timeline.show");
+    Route::post("/home/timeline/create", [HomeTimelineContentController::class, "store"])->name("home.timeline.store");
+    Route::put("/home/timeline/{timeline}", [HomeTimelineContentController::class, "update"])->name("home.timeline.update");
+    Route::delete("/home/timeline/{timeline}", [HomeTimelineContentController::class, "destroy"])->name("home.timeline.destroy");
 
     Route::get('/publication-opportunity', [PublicationOpportunityController::class, 'index'])->name('pub.home');
     Route::get('/publication-opportunity/create', [PublicationOpportunityController::class, 'createPage'])->name("pub.create");
