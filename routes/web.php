@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeKeynoteContentController;
 use App\Http\Controllers\HomePublicationContentController;
 use App\Http\Controllers\HomeSupportedByContentController;
 use App\Http\Controllers\HomeTimelineContentController;
+use App\Http\Controllers\MainHomeContentController;
 use App\Http\Controllers\ProgramCommitteController;
 use App\Http\Controllers\PublicationOpportunityController;
 use App\Http\Controllers\ScientificReviewController;
@@ -35,9 +36,7 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::get('/', function () {
-    return Inertia::render('HomeIndex', ["active" => "home"]);
-});
+Route::get('/', [MainHomeContentController::class, "index"])->name("home");
 
 // Route::get('/home', [PublicationOpportunityController::class, "home"])->name("home");
 Route::get('/program-committe', [ProgramCommitteController::class, "home"])->name("proc.index");

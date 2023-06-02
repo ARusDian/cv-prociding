@@ -8,7 +8,7 @@ import { Dialog, DialogContent } from "@mui/material";
 
 interface Props {
   supports: IHomeSupport[]
-} 
+}
 
 const Supported = ({ supports }: Props) => {
   const imageForm = useForm<{ img: File | string }>({

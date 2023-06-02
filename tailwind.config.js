@@ -18,7 +18,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-                roboto: ['Roboto']
+                roboto: ['Roboto'],
+                oswald: ["Oswald"]
             },
         }
     },

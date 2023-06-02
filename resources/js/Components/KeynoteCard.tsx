@@ -10,14 +10,14 @@ interface Props {
 const KeynoteCard = ({ imgSrc, name, title, university } : Props) => {
   return (
     <>
-      <div className="w-[450px] h-[450px] text-center text-xl">
-        <div className="w-[70%] h-[70%] mx-auto mb-4">
-          <img src="https://iciep.researchsynergy.org/wp-content/uploads/2019/08/WhatsApp-Image-2019-07-26-at-19.34.12-150x150.jpeg" alt="" className='object-contain w-full h-full' />
+      <div className="w-[320px] h-[350px] text-center text-xl flex flex-col justify-around">
+        <div className="w-[65%] h-[70%] mx-auto mb-4 hover:w-[68%] hover:h-[71%] transition-all duration-500">
+          <img src={imgSrc} alt="" className='object-cover w-full h-full rounded-md' />
         </div>
-        <div className="flex flex-col items-center justify-center gap-2">
-          <p className='font-bold text-2xl'>Prof. Orat Dorajat M.Bus Ph.D</p>
-          <p className='font-semibold text-xl'>Rector</p>
-          <p className='font-semibold text-xl'>Universitas Terbuka</p>
+        <div className="flex flex-col items-center justify-center">
+          <p className='font-black text-xl'>{name}</p>
+          <p className='font- text-lg italic'>{title}</p>
+          <p className='font- text-lg'>{university}</p>
         </div>
       </div>
     </>
