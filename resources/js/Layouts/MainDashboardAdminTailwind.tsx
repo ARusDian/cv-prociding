@@ -27,13 +27,20 @@ const DashboardAdminTailwind = ({ children }: Props) => {
         <div className="mt-20 w-11/12 text-white">
           <ul className="flex flex-col gap-2 font-roboto">
             <InertiaLink href={route("dashboard")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Dashboard</InertiaLink>
-            <div className="px-5 py-2 rounded-xl hover:bg-[#FFA500] cursor-pointer" onClick={() => setDropdownOpen(prev => !prev)}>Home Content</div>
+            <div className="px-5 py-2 rounded-xl hover:bg-[#FFA500] cursor-pointer" onClick={() => setDropdownOpen(prev => !prev)}>
+              <div className="flex flex-row justify-between items-center">
+                <p>Home Content</p>
+                <div className="w-6 h-6">
+                  {dropdownOpen ? <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" strokeWidth="0.4800000000000001"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="0.048"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z" fill="#000000"></path> </g></svg> : <svg style={{ transform: "rotate(-90deg)" }} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" strokeWidth="0.4800000000000001"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="0.048"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z" fill="#000000"></path> </g></svg>}
+                </div>
+              </div>
+            </div>
             {dropdownOpen && (
               <div className="flex flex-col gap-2 pl-4">
                 <InertiaLink href={route("home.header.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Header</InertiaLink>
                 <InertiaLink href={route("home.keynote.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Keynote</InertiaLink>
-                {/* <InertiaLink href={route("home.gallery")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Gallery</InertiaLink>
-                <InertiaLink href={route("home.poster")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Poster</InertiaLink>
+                <InertiaLink href={route("home.gallery.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Gallery</InertiaLink>
+                {/* <InertiaLink href={route("home.poster")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Poster</InertiaLink>
                 <InertiaLink href={route("home.publication")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Publication</InertiaLink>
                 <InertiaLink href={route("home.support")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Support</InertiaLink> */}
               </div>

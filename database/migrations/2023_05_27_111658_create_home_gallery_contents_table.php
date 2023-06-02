@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('home_gallery_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('img_path');
+            $table->string('img_path')->nullable(true)->default();
             $table->timestamps();
         });
     }

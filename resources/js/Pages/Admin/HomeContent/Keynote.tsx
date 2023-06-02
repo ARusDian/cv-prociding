@@ -60,7 +60,6 @@ const Keynote = ({ keynotes }: Props) => {
   }
 
   const submitAddNote = () => {
-    console.log(keynotesForm.data);
     keynotesForm.clearErrors();
     keynotesForm.post(route('home.keynote.store'), {
       onError: (errors) => {

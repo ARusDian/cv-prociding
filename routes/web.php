@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Fortify\UserProfileController;
+use App\Http\Controllers\HomeGalleryContentController;
 use App\Http\Controllers\HomeHeaderContentController;
 use App\Http\Controllers\HomeKeynoteContentController;
 use App\Http\Controllers\ProgramCommitteController;
@@ -54,6 +55,11 @@ Route::prefix('dashboard')->group(function () {
     Route::post("/home/keynote/create", [HomeKeynoteContentController::class, "store"])->name("home.keynote.store");
     Route::put("/home/keynote/{homeHeader}", [HomeKeynoteContentController::class, "update"])->name("home.keynote.update");
 
+    Route::get('/home/gallery', [HomeGalleryContentController::class, 'show'])->name("home.gallery.show");
+    Route::post("/home/gallery/create", [HomeGalleryContentController::class, "store"])->name("home.gallery.store");
+    Route::put("/home/gallery/{gallery}", [HomeGalleryContentController::class, "update"])->name("home.gallery.update");
+    Route::delete("/home/gallery/{gallery}", [HomeGalleryContentController::class, "destroy"])->name("home.gallery.destroy");
+
     Route::get('/publication-opportunity', [PublicationOpportunityController::class, 'index'])->name('pub.home');
     Route::get('/publication-opportunity/create', [PublicationOpportunityController::class, 'createPage'])->name("pub.create");
     Route::post('/publication-opportunity/create', [PublicationOpportunityController::class, 'store'])->name("pub.store");
@@ -88,6 +94,7 @@ Route::prefix('dashboard')->group(function () {
 });
 
 
+Route::resource('/user', UserController::class);
 
 Route::middleware([
     'auth:sanctum',
@@ -97,7 +104,6 @@ Route::middleware([
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
     Route::middleware(['role:admin|super-admin'])->group(function () {
         Route::middleware(['role:super-admin'])->group(function () {
-            Route::resource('/user', UserController::class);
         });
     });
 });

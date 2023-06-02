@@ -5,6 +5,8 @@ import KeynoteCard from '@/Components/KeynoteCard';
 import GalleryCard from '@/Components/GalleryCard';
 import LatestPublication from '@/Components/LatestPublication';
 import Carousel from 'react-material-ui-carousel';
+import route from 'ziggy-js';
+import { asset } from '@/Models/Helper';
 
 interface Props {
   active: string
@@ -22,10 +24,10 @@ const HomeIndex = ({ active }: Props) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
       }}>
-        <div className="flex flex-col justify-center items-center gap-4">
-          <img src="https://itk.ac.id/wp-content/uploads/2020/12/OK-LOGO-ITK-1024x701-1.jpg" alt="" className='w-56 h-56 object-contain' />
+        <div className="flex flex-col justify-between items-center gap-4">
+            <img src={asset('root', 'assets/images/logo.png')} alt="" className='w-auto h-60 object-contain' />
           <h1 className="text-xl text-center">{new Date().toLocaleDateString()}</h1>
-          <h1 className="text-7xl font-bold text-center w-[60%]">International Conference on Computer Science and Engineering</h1>
+          <h1 className="text-7xl font-bold text-center w-[60%]">International Conference on Innovation in Education and Pedagogy</h1>
           <h1 className="text-lg text-center w-[60%]">The 1st ICIEP in collaboration with TING-XI 2019
             Atria Hotel Serpong, Indonesia</h1>
         </div>
