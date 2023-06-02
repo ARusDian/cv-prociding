@@ -55,6 +55,7 @@ ul {
   width: 70%;
   margin: auto;
   margin-top: 65px;
+  padding-top: 16px;
   text-align: center;
   word-wrap: break-word;
 }
