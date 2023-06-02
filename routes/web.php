@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeGalleryContentController;
 use App\Http\Controllers\HomeHeaderContentController;
 use App\Http\Controllers\HomeKeynoteContentController;
 use App\Http\Controllers\HomePublicationContentController;
+use App\Http\Controllers\HomeSupportedByContentController;
 use App\Http\Controllers\HomeTimelineContentController;
 use App\Http\Controllers\ProgramCommitteController;
 use App\Http\Controllers\PublicationOpportunityController;
@@ -71,6 +72,11 @@ Route::prefix('dashboard')->group(function () {
     Route::post("/home/publication/create", [HomePublicationContentController::class, "store"])->name("home.publication.store");
     Route::put("/home/publication/{publication}", [HomePublicationContentController::class, "update"])->name("home.publication.update");
     Route::delete("/home/publication/{publication}", [HomePublicationContentController::class, "destroy"])->name("home.publication.destroy");
+
+    Route::get('/home/support', [HomeSupportedByContentController::class, 'show'])->name("home.support.show");
+    Route::post("/home/support/create", [HomeSupportedByContentController::class, "store"])->name("home.support.store");
+    Route::put("/home/support/{support}", [HomeSupportedByContentController::class, "update"])->name("home.support.update");
+    Route::delete("/home/support/{support}", [HomeSupportedByContentController::class, "destroy"])->name("home.support.destroy");
 
     Route::get('/publication-opportunity', [PublicationOpportunityController::class, 'index'])->name('pub.home');
     Route::get('/publication-opportunity/create', [PublicationOpportunityController::class, 'createPage'])->name("pub.create");
