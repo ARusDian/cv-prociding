@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import MainDashboardAdminTailwind from '@/Layouts/MainDashboardAdminTailwind';
 import MaterialReactTable from 'material-react-table';
 import { Dialog, DialogContent } from "@mui/material";
-import { InertiaLink, useForm } from '@inertiajs/inertia-react';
+import { useForm } from '@inertiajs/inertia-react';
 import route from 'ziggy-js';
 import { IHomeGallery } from '@/Models/Home';
-import { asset } from '@/Models/Helper';
 
 interface Props {
   galleries: IHomeGallery[]
