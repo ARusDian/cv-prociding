@@ -141,9 +141,9 @@ const Gallery = ({ galleries }: Props) => {
               setEnabled(true)
             }} />
             {!enabled ?
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white cursor-not-allowed' onClick={onSubmitHandler} disabled>Tambah Foto</button>
+              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white cursor-not-allowed' onClick={onSubmitHandler} disabled>Add Photo</button>
               :
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white' onClick={onSubmitHandler} >Tambah Foto</button>
+              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white' onClick={onSubmitHandler} >Add Photo</button>
             }
           </div>
         </div>
