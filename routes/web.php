@@ -4,6 +4,7 @@ use App\Actions\Fortify\UserProfileController;
 use App\Http\Controllers\HomeGalleryContentController;
 use App\Http\Controllers\HomeHeaderContentController;
 use App\Http\Controllers\HomeKeynoteContentController;
+use App\Http\Controllers\HomeNewsContentController;
 use App\Http\Controllers\HomePublicationContentController;
 use App\Http\Controllers\HomeSupportedByContentController;
 use App\Http\Controllers\HomeTimelineContentController;
@@ -52,6 +53,12 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/home/header', [HomeHeaderContentController::class, 'show'])->name("home.header.show");
     Route::post("/home/header/create", [HomeHeaderContentController::class, "store"])->name("home.header.store");
     Route::put("/home/header/{homeHeader}", [HomeHeaderContentController::class, "update"])->name("home.header.update");
+
+    Route::get('/home/news', [HomeNewsContentController::class, 'show'])->name("home.news.show");
+    Route::post("/home/news/create", [HomeNewsContentController::class, "store"])->name("home.news.store");
+    Route::put("/home/news/{news}", [HomeNewsContentController::class, "update"])->name("home.news.update");
+    Route::delete("/home/news/{news}", [HomeNewsContentController::class, "destroy"])->name("home.news.destroy");
+    Route::put("/home/news/{news}/toggle-active", [HomeNewsContentController::class, "toggleActive"])->name("home.news.toggle_active");
 
     Route::get('/home/keynote', [HomeKeynoteContentController::class, 'show'])->name("home.keynote.show");
     Route::post("/home/keynote/create", [HomeKeynoteContentController::class, "store"])->name("home.keynote.store");

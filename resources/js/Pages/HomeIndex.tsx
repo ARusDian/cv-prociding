@@ -76,6 +76,7 @@ const HomeIndex = ({ active, header, keynotes, galleries, timelines, publication
             </div>
           </div>
         </div>
+        <hr className='border border-gray-100 mt-10' />
         <div id="gallery" className='mt-10'>
           <h1 className="text-4xl font-extrabold text-center mb-10">GALLERY</h1>
           <div className="grid grid-cols-4 gap-6 justify-items-center h-fit">

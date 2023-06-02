@@ -12,6 +12,20 @@ export interface IHomeHeaderForm extends IHomeHeader {
   input_background_image: File | string,
 }
 
+export interface IHomeNews {
+  id: number,
+  image: string,
+  title: string,
+  content: string,
+  is_active: boolean
+}
+
+export interface IHomeNewsForm  {
+  title: string,
+  content: string,
+  img: File | string,
+}
+
 export interface IHomeKeynote {
   id: number,
   img_path: string,

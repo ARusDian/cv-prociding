@@ -21,12 +21,18 @@ class MainHomeContentController extends Controller
         $supportedBy = HomeSupportedByContent::all();
 
         return Inertia::render('HomeIndex', [
-            "header" => $header,
-            "keynotes" => $keynotes,
-            "galleries" => $galleries,
-            "timelines" => $timelines,
-            "publications" => $publications,
-            "supportedBy" => $supportedBy,
+            "header" => $header ? $header : json_encode([
+              'date_stamp' => '',
+              'logo_path' => '',
+              'background_image_path' => '',
+              'title' => '',
+              'subtitle' => '',
+            ]),
+            "keynotes" => $keynotes ? $keynotes : [],
+            "galleries" => $galleries ? $galleries : [],
+            "timelines" => $timelines  ? $timelines : [],
+            "publications" => $publications ? $publications : [],
+            "supportedBy" => $supportedBy ? $supportedBy : [],
             "active" => "home"
         ]);
     }
