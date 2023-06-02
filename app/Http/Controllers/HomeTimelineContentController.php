@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HomePosterContent;
+use App\Models\HomeTimelineContent;
 use Illuminate\Http\Request;
 
-class HomePosterContentController extends Controller
+class HomeTimelineContentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class HomePosterContentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(HomePosterContent $homePosterContent)
+    public function show(HomeTimelineContent $homePosterContent)
     {
         //
     }
@@ -42,7 +42,7 @@ class HomePosterContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HomePosterContent $homePosterContent)
+    public function edit(HomeTimelineContent $homePosterContent)
     {
         //
     }
@@ -50,7 +50,7 @@ class HomePosterContentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, HomePosterContent $homePosterContent)
+    public function update(Request $request, HomeTimelineContent $homePosterContent)
     {
         //
     }
@@ -58,7 +58,7 @@ class HomePosterContentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(HomePosterContent $homePosterContent)
+    public function destroy(HomeTimelineContent $homePosterContent)
     {
         //
     }
