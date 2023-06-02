@@ -29,7 +29,7 @@ export interface IHomeGallery {
   id: number,
   img_path: string,
 }
-export interface IHomePoster {
+export interface IHomeTimeline {
   id: number,
   img_path: string,
 }
