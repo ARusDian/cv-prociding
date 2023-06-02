@@ -45,7 +45,7 @@ const DashboardAdminTailwind = ({ children }: Props) => {
                 <InertiaLink href={route("home.gallery.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Gallery</InertiaLink>
                 <InertiaLink href={route("home.timeline.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Timeline</InertiaLink>
                 <InertiaLink href={route("home.publication.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Publication</InertiaLink>
-                {/* <InertiaLink href={route("home.support")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Support</InertiaLink> */}
+                <InertiaLink href={route("home.support.show")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Support</InertiaLink>
               </div>
             )}
             <InertiaLink href={route("proc.home")} className="px-5 py-2 rounded-xl hover:bg-[#FFA500]">Program Committe</InertiaLink>
