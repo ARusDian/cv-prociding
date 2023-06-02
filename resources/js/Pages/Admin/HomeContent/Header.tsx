@@ -65,8 +65,6 @@ const Header = ({ header }: Props) => {
     }
   }
 
-  console.log(error);
-
   const backgroundInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBackgroundPreviewImage(URL.createObjectURL(e.target?.files![0]));
     headerForm.setData("input_background_image", e.target?.files![0]);
@@ -126,10 +124,12 @@ const Header = ({ header }: Props) => {
               {success && (<p>Success</p>)}
             </div>
           </div>
-          <div className="flex flex-col gap-4 items-start px-2 w-[50%]">
-            <h1 className='font-semibold text-2xl'>Logo Picture</h1>
-            <img src={logoPreviewImage} alt="" className='h-80 object-contain' />
-          </div>
+          {logoPreviewImage && (
+            <div className="flex flex-col gap-4 items-start px-2 w-[50%]">
+              <h1 className='font-semibold text-2xl'>Logo Picture</h1>
+              <img src={logoPreviewImage} alt="" className='h-80 object-contain' />
+            </div>
+          )}
         </div>
         <hr className='border-b border-b-black mt-2' />
       </div>
