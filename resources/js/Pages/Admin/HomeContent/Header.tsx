@@ -79,7 +79,7 @@ const Header = ({ header }: Props) => {
     <MainDashboardAdminTailwind>
       <div className="overflow-hidden font-roboto flex flex-col gap-4 mt-4 px-2">
         <div className="flex flex-row gap-4">
-          <h1 className='font-semibold text-2xl'>Header</h1>
+          <h1 className='font-semibold text-3xl'>Header</h1>
           <div className="flex flex-row flex-wrap text-sm gap-1 w-[50%]">
             {error.length > 0 && error.map((err) => (
               <p className='text-red-500 mr-2'>*{err}</p>
