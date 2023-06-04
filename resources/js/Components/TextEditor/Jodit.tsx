@@ -43,6 +43,7 @@ const Jodit = ({ contentValue, contentValueHandler, imageValue, imageValueHandle
       'outdent', 'indent',  '|',
       'font',
       'fontsize',
+      'lineHeight',
       'brush',
       'paragraph', '|',
       'image',

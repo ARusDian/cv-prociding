@@ -41,7 +41,7 @@ const HomeIndex = ({ active, header, keynotes, galleries, timelines, publication
 
   return (
     <MasterLayoutCSS active={active}>
-      <div className="relative flex flex-col justify-center items-center mt-[65px] h-[700px]">
+      <div className="relative flex flex-col justify-center items-center mt-[70px] h-[700px]">
         <div id='header' className="absolute -z-20 top-0 bottom-0 left-0 right-0 w-full h-full opacity-50" style={{
           backgroundImage: header.background_image_path ? `url(${header.background_image_path})` : "url(" + "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg" + ")",
           backgroundPosition: 'center',
