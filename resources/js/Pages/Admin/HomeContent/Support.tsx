@@ -123,7 +123,7 @@ const Supported = ({ supports }: Props) => {
         </DialogContent>
       </Dialog>
       <div className="overflow-hidden font-roboto flex flex-col gap-4 mt-4 px-2">
-        <div className="flex flex-row justify-between gap-4">
+        <div className="flex flex-col md:flex-row justify-between gap-4">
           <div className="flex flex-row gap-4 items-center">
             <h1 className="text-3xl font-bold ">Supported By</h1>
             {loading && (
@@ -137,15 +137,15 @@ const Supported = ({ supports }: Props) => {
             )}
           </div>
           {error && (<div className="text-red-500">{error}</div>)}
-          <div className='flex flex-row gap-4'>
-            <input type="file" name='img' className="rounded-lg w-96 border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
+          <div className='flex flex-row justify-between gap-4'>
+            <input type="file" name='img' className="rounded-lg w-full md:w-96 border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
               imageForm.setData("img", e.target.files![0])
               setEnabled(true)
             }} />
             {!enabled ?
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white cursor-not-allowed' onClick={onSubmitHandler} disabled>Add Photo</button>
+              <button className='px-4 py-2 w-32 bg-green-500 rounded-lg font-bold text-white cursor-not-allowed' onClick={onSubmitHandler} disabled>Add Photo</button>
               :
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white' onClick={onSubmitHandler} >Add Photo</button>
+              <button className='px-4 py-2 w-32 bg-green-500 rounded-lg font-bold text-white' onClick={onSubmitHandler} >Add Photo</button>
             }
           </div>
         </div>
