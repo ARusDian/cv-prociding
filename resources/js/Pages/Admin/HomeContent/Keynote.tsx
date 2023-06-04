@@ -85,7 +85,7 @@ const Keynote = ({ keynotes }: Props) => {
           </div>
         </div>
         <hr className='border-b border-b-black' />
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid xl:grid-cols-3 gap-10">
           {keynotesForm.data.map((keynote, index) => (
             <KeynoteContent key={keynote.id} keynotes={keynote} removeKeynote={removeKeynote} updateKeynoteValue={updateKeynoteValue} />
           ))}
