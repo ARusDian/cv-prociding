@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import DashboardAdminLayoutCSS from '@/Layouts/DashboardAdminLayoutCSS';
+import MainDashboardAdminTailwind from "@/Layouts/MainDashboardAdminTailwind";
+// import DashboardAdminLayoutCSS from '@/Layouts/DashboardAdminLayoutCSS';
 import Jodit from '@/Components/TextEditor/Jodit';
-import { useForm } from "@inertiajs/inertia-react";
+import { InertiaLink, useForm } from "@inertiajs/inertia-react";
 import route from "ziggy-js";
 interface IProgramCommitte {
   content: string,
@@ -41,22 +42,28 @@ const Edit = ({ id, submissionGuideline }: Props) => {
 
   return (
     <div style={{ overflow: "hidden" }}>
-      <DashboardAdminLayoutCSS redirectTo={route("sub.home")} headerTitle="Edit Program Committe" />
-      <div style={{ all: "initial" }}></div>
-      <div style={{ width: "80%", margin: "32px auto" }}>
-        <Jodit
-          contentValue={editorContent}
-          contentValueHandler={(value: unknown) => form.setData('editorContent', value as string)}
-          imageValue={form.data.images}
-          imageValueHandler={setImages}
-          editorRef={editorRef}
-        />
-
-        <button style={{ marginTop: "12px", backgroundColor: "lightgreen", borderWidth: 1, borderColor: "green", padding: "12px 24px", fontSize: "14px", borderRadius: "16px" }} onClick={submitHandler}>Save</button>
-        <button style={{ marginTop: "12px", backgroundColor: "red", borderWidth: 1, borderColor: "#FFA500", padding: "12px 24px", fontSize: "14px", borderRadius: "16px", marginLeft: '10px', color: "white", fontWeight: "bold" }} onClick={deleteHandler}>Hapus</button>
-      </div>
+      <MainDashboardAdminTailwind>
+        <div className="flex flex-row items-center gap-4 font-roboto">
+          <InertiaLink href={route("sub.home")} className="text-xl px-3 py-1 rounded-full bg-[#77B8A3] hover:bg-[#FFA500]">{"<"}</InertiaLink>
+          <h1 className="font-bold text-xl">Edit Submission Guideline</h1>
+        </div>
+        <div style={{ all: "initial" }} className="prose">
+          <div style={{ width: "100%", margin: "20px auto 8px" }}>
+            <Jodit
+              contentValue={editorContent}
+              contentValueHandler={(value: unknown) => form.setData('editorContent', value as string)}
+              imageValue={form.data.images}
+              imageValueHandler={setImages}
+              editorRef={editorRef}
+            />
+          </div>
+        </div>
+        <div className="flex flex-row gap-2 items-center">
+          <button className="px-4 py-2 text-base rounded-full bg-[#77B8A3] font-semibold hover:bg-[#FFA500]" onClick={submitHandler}>Save</button>
+          <button className="px-4 py-2 text-base rounded-full bg-red-500 text-white font-semibold hover:bg-red-600" onClick={deleteHandler}>Delete</button>
+        </div>
+      </MainDashboardAdminTailwind>
     </div>
-
   );
 }
 
