@@ -27,7 +27,7 @@ const MasterLayoutCSS = ({ children, active }: Props) => {
         <nav id='navbar' className='z-50'>
           <div className="nav-wrapper font-roboto text-center" style={{ color: "white" }}>
             <InertiaLink href="/" style={{ color: "black", textDecoration: "none", fontWeight: "bold", fontSize: "20px" }}>
-              <div className="h-[10%]">
+              <div className="image h-[10%]">
                 <img src={asset('root', 'assets/images/logo-transparent-clean.png')} alt="logo" className='h-12' />
               </div>
             </InertiaLink>

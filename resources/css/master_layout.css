@@ -56,6 +56,13 @@ ul {
   margin: auto;
   margin-top: 65px;
   padding-top: 16px;
-  text-align: center;
   word-wrap: break-word;
+}
+
+.image {
+  height: 10%;
+}
+
+.image>img {
+  height: 3rem;
 }

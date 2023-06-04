@@ -85,6 +85,7 @@ const HomeIndex = ({ active, header, keynotes, galleries, timelines, publication
             ))}
           </div>
         </div>
+        <hr className='border border-gray-100 mt-10' />
         <div id="timeline">
           <div className="w-full flex flex-col gap-4 mt-10 ">
             <h1 className='text-4xl font-extrabold text-center '>TIMELINE</h1>
@@ -95,6 +96,7 @@ const HomeIndex = ({ active, header, keynotes, galleries, timelines, publication
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2gOp_o0HxgwsnD2iyj3XXC2eFq5Q8KyYD6A&usqp=CAU" alt="" className='object-cover h-full' /> */}
           </div>
         </div>
+        <hr className='border border-gray-100 mt-10' />
         <div id="latest-publication" className='mt-10'>
           <h1 className='text-center font-bold text-4xl uppercase mb-4'>Latest Publication of Participant</h1>
           <div className="flex flex-row justify-around items-center gap-4">
@@ -103,6 +105,7 @@ const HomeIndex = ({ active, header, keynotes, galleries, timelines, publication
             ))}
           </div>
         </div>
+        <hr className='border border-gray-100 mt-10' />
         <div id="supported-by" className='mt-20'>
           <h1 className='text-center font-bold text-3xl mb-2'>Organized and Supported by</h1>
           <Carousel

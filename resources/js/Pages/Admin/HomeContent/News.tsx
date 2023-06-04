@@ -133,7 +133,7 @@ const News = ({ news }: Props) => {
         </DialogContent>
       </Dialog>
       
-      <Dialog open={editOpenToggle} onClose={() => setCreateOpenToggle(prev => !prev)} maxWidth='lg'>
+      <Dialog open={editOpenToggle} onClose={() => setEditOpenToggle(prev => !prev)} maxWidth='lg'>
         <DialogContent className='w-[1000px] h-[900px] max-w-6xl'>
           <div className="flex flex-col justify-start gap-5 h-full">
             <div className="flex flex-row justify-between">
@@ -243,7 +243,7 @@ const News = ({ news }: Props) => {
             </button>
             <a target='_blank' href={row.original.image}
               className="bg-blue-500 text-white hover:bg-blue-600 py-3 px-5 rounded-lg text-md font-semibold">
-              Show Image
+              Image
             </a>
             <button onClick={() => {
               setCurrentEditedId(row.original.id)
