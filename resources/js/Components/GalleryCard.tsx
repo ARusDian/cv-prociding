@@ -7,7 +7,7 @@ interface Props {
 
 const GalleryCard = ({ imgSrc, alt }: Props) => {
   return (
-    <div className='h-[200px] w-[100%] rounded-lg hover:opacity-90'>
+    <div className='sm:h-[250px] md:h-[170px] lg:h-[200px] w-full rounded-lg hover:opacity-90'>
       <img src={imgSrc} alt={alt ? alt : "AWKOAKWOAKWO"} className='object-cover h-full w-full rounded-lg '/>
     </div>
   )

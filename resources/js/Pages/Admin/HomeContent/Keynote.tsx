@@ -67,6 +67,10 @@ const Keynote = ({ keynotes }: Props) => {
         }
 
         setError(listError);
+
+        setTimeout(() => {
+          setError([]);
+        }, 2000);
       }
     })
   }
@@ -79,14 +83,14 @@ const Keynote = ({ keynotes }: Props) => {
           <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' onClick={submitAddNote}>Save</button>
           <button className='bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full' onClick={addKeynote}>+</button>
           <div className="flex flex-col text-xs">
-            {error.length > 0 && error.map(err => (
-              <p className='text-red-500'>{err.split('.')[1]}</p>
-            ))}
+            {error.length > 0 && (
+              <p className='text-red-500'>{error[0].split('.')[1]}</p>
+            )}
           </div>
         </div>
         <hr className='border-b border-b-black' />
-        <div className="grid xl:grid-cols-3 gap-10">
-          {keynotesForm.data.map((keynote, index) => (
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
+          {keynotesForm.data.map((keynote) => (
             <KeynoteContent key={keynote.id} keynotes={keynote} removeKeynote={removeKeynote} updateKeynoteValue={updateKeynoteValue} />
           ))}
         </div>

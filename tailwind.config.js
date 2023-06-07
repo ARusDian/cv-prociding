@@ -21,6 +21,9 @@ module.exports = {
                 roboto: ['Roboto'],
                 oswald: ["Oswald"]
             },
+            zIndex: {
+                '100': '100',
+            }
         }
     },
 

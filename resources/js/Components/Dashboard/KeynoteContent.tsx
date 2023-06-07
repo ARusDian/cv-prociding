@@ -12,26 +12,26 @@ const KeynoteContent = ({ keynotes, removeKeynote, updateKeynoteValue }: Props) 
   const [previewImage, setPreviewImage] = React.useState<string | undefined>(keynotes.img_path);
 
   return (
-    <div className="flex flex-row gap-2 h-72">
+    <div className="flex flex-col-reverse items-center sm:flex-row sm:items-start gap-2 h-full sm:h-72">
       <div className="flex flex-col items-start justify-around gap-2 mb-8 h-full">
         <div className="flex flex-row items-center gap-3 text-sm">
           <p className='w-[70px]'>Photo : </p>
-          <input type="file" name='img' className="rounded-lg w-80 lg:w-56 border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
+          <input type="file" name='img' className="rounded-lg w-60 sm:w-80 lg:w-56 border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
             updateKeynoteValue(keynotes.id, 'input_img', e.target.files![0])
             setPreviewImage(URL.createObjectURL(e.target?.files![0]));
           }} />
         </div>
         <div className="flex flex-row items-center gap-3 text-sm">
           <p className='w-[70px]'>Name : </p>
-          <input type="text" name='name' className="rounded-lg w-80 lg:w-56 h-8 text-sm border border-green-900" value={keynotes.name} onChange={(e) => updateKeynoteValue(keynotes.id, 'name', e.target.value)} />
+          <input type="text" name='name' className="rounded-lg w-60 sm:w-80 lg:w-56 h-8 text-sm border border-green-900" value={keynotes.name} onChange={(e) => updateKeynoteValue(keynotes.id, 'name', e.target.value)} />
         </div>
         <div className="flex flex-row items-center gap-3 text-sm">
           <p className='w-[70px]'>Title : </p>
-          <input type="text" name='title' className="rounded-lg w-80 lg:w-56 h-8 text-sm border border-green-900" value={keynotes.title} onChange={(e) => updateKeynoteValue(keynotes.id, 'title', e.target.value)} />
+          <input type="text" name='title' className="rounded-lg w-60 sm:w-80 lg:w-56 h-8 text-sm border border-green-900" value={keynotes.title} onChange={(e) => updateKeynoteValue(keynotes.id, 'title', e.target.value)} />
         </div>
         <div className="flex flex-row items-center gap-3 text-sm">
           <p className='w-[70px]'>Affiliation : </p>
-          <input type="text" name='affiliation' className="rounded-lg w-80 lg:w-56 h-8 text-sm border border-green-900" value={keynotes.affiliation} onChange={(e) => updateKeynoteValue(keynotes.id, 'affiliation', e.target.value)} />
+          <input type="text" name='affiliation' className="rounded-lg w-60 sm:w-80 lg:w-56 h-8 text-sm border border-green-900" value={keynotes.affiliation} onChange={(e) => updateKeynoteValue(keynotes.id, 'affiliation', e.target.value)} />
         </div>
         <div className="flex flex-row items-center gap-3 text-sm">
           <p className='w-[70px]'>Rank  : </p>
@@ -42,17 +42,19 @@ const KeynoteContent = ({ keynotes, removeKeynote, updateKeynoteValue }: Props) 
         </div>
         <button className='text-sm bg-red-500 px-2 py-1 rounded-lg self-end text-gray-900 font-semi-bold' onClick={() => removeKeynote(keynotes.id)}>Hapus</button>
       </div>
-      {previewImage || keynotes.img_path ?
-        (
-          <div className="sm:w-full md:w-[30%] h-full lg:h-full xl:w-full border border-gray-300 rounded-lg">
-            <img src={previewImage || keynotes.img_path} className='w-full h-full object-cover rounded-lg' />
-          </div>
-        ) :
-        (
-          <div className="sm:w-full md:w-[30%] h-full lg:h-full xl:w-full border border-gray-300 rounded-lg flex items-center justify-center">
-            <p className='text-sm text-gray-500'>No Image</p>
-          </div>
-        )}
+      <div className="h-60 w-48 sm:w-full">
+        {previewImage || keynotes.img_path ?
+          (
+            <div className="sm:w-full md:w-[50%] h-full xl:w-full border border-gray-300 rounded-lg">
+              <img src={previewImage || keynotes.img_path} className='w-full h-full object-cover rounded-lg' />
+            </div>
+          ) :
+          (
+            <div className="sm:w-full md:w-[30%] h-full xl:w-full border border-gray-300 rounded-lg flex items-center justify-center">
+              <p className='text-sm text-gray-500'>No Image</p>
+            </div>
+          )}
+      </div>
     </div>
   )
 }

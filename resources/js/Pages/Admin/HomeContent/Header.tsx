@@ -87,14 +87,14 @@ const Header = ({ header }: Props) => {
           </div>
         </div>
         <hr className='border-b border-b-black' />
-        <div className="m-auto xl:flex xl:flex-row xl:m-0 ">
+        <div className="m-auto 2xl:flex 2xl:flex-row 2xl:m-0 2xl:w-full">
           <div className="flex flex-col w-full justify-between gap-2 px-2">
             <div className="flex flex-col gap-1">
               <p>Background Image : </p>
-              <input type="file" name="background_image" className="rounded-lg w-[600px] border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={backgroundInputHandler} />
+              <input type="file" name="background_image" className="rounded-lg w-full sm:w-[600px] border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={backgroundInputHandler} />
             </div>
             <div className="flex flex-row items-center gap-6">
-              <div className="w-[600px] h-80 flex flex-row justify-center items-center border border-dashed border-gray-300">
+              <div className="w-full sm:w-[600px] h-80 flex flex-row justify-center items-center border border-dashed border-gray-300">
                 {backgroundPreviewImage ?
                   (<img src={backgroundPreviewImage} alt="" className='h-80 object-contain' />) :
                   (<div>
@@ -107,9 +107,9 @@ const Header = ({ header }: Props) => {
           <div className="flex flex-col w-full justify-between gap-2 px-2">
             <div className="flex flex-col gap-1">
               <p>Logo : </p>
-              <input type="file" name='logo_path' className="rounded-lg w-[600px] border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={logoInputHandler} />
+              <input type="file" name='logo_path' className="rounded-lg w-full sm:w-[600px] border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={logoInputHandler} />
             </div>
-            <div className="w-[600px] h-80 flex flex-row justify-center items-center border border-dashed border-gray-300">
+            <div className="w-full sm:w-[600px] h-80 flex flex-row justify-center items-center border border-dashed border-gray-300">
               {logoPreviewImage ?
                 (<img src={logoPreviewImage} alt="" className='h-80 object-contain' />) :
                 (<div>
@@ -120,21 +120,21 @@ const Header = ({ header }: Props) => {
           </div>
         </div>
         <hr className='border-b border-b-black' />
-        <div className="m-auto xl:flex xl:flex-row xl:m-0 ">
-          <div className="flex flex-col gap-4 items-start px-2 w-full">
-            <div className="flex flex-col">
+        <div className="m-auto 2xl:flex 2xl:flex-row 2xl:m-0">
+          <div className="flex flex-col w-full justify-between gap-2 px-2">
+            <div className="flex flex-col w-full">
               <p>Date Stamp : </p>
-              <input type="date" name='date_stamp' className='w-[600px] rounded-lg' value={headerForm.data.date_stamp} onChange={(e) => headerForm.setData("date_stamp", e.target.value)} />
+              <input type="date" name='date_stamp' className='w-[250px] sm:w-[600px] rounded-lg' value={headerForm.data.date_stamp} onChange={(e) => headerForm.setData("date_stamp", e.target.value)} />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <p>Title : </p>
-              <textarea name='title' className='w-[600px] rounded-lg h-[143px] resize-none' placeholder='Title....' value={headerForm.data.title} onChange={(e) => headerForm.setData("title", e.target.value)} />
+              <textarea name='title' className='w-[250px] sm:w-[600px] rounded-lg h-[143px] resize-none' placeholder='Title....' value={headerForm.data.title} onChange={(e) => headerForm.setData("title", e.target.value)} />
             </div>
           </div>
           <div className="flex flex-col items-start px-2 w-full">
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <p>Sub-title : </p>
-              <textarea name='subtitle' className='w-[600px] rounded-lg h-56' placeholder='Sub-title....' value={headerForm.data.subtitle} onChange={(e) => headerForm.setData("subtitle", e.target.value)} />
+              <textarea name='subtitle' className='w-[250px] sm:w-[600px] rounded-lg h-56' placeholder='Sub-title....' value={headerForm.data.subtitle} onChange={(e) => headerForm.setData("subtitle", e.target.value)} />
             </div>
           </div>
         </div>

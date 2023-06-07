@@ -10,11 +10,11 @@ interface Props {
 const LatestPublication = ({ imgSrc, linkTo }: Props) => {
   return (
     <>
-      <div className="w-[50%] flex flex-col items-center gap-4">
-        <div className='w-[70%] h-full'>
-          <img src={imgSrc} alt="" className='object-contain w-full h-[700px] rounded-lg' />
+      <div className="w-full xl:w-[40%] flex flex-col items-center gap-4">
+        <div className='w-[330px] xl:w-fit h-[500px] xl:h-[640px]'>
+          <img src={imgSrc} alt="" className='object-contain w-full h-full rounded-lg' />
         </div>
-        <a href={linkTo} target='_blank' className='bg-[#FFA500] px-4 py-2 text-xl font-black rounded-full hover:opacity-90 transition-all ease-out duration-300'>Access to Conference Paper Proceeding</a>
+        <a href={linkTo} target='_blank' className='bg-[#FFA500] px-4 py-2 text-sm xl:text-xl font-black rounded-full hover:opacity-90 transition-all ease-out duration-300 break-words text-center'>Access to Conference Paper Proceeding</a>
       </div>
     </>
   )

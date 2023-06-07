@@ -10,9 +10,28 @@ export default defineConfig({
     }),
     react(),
   ],
+  server: {
+    hmr: {
+      host: 'localhost'
+    }
+  },
   resolve: {
     alias: {
       '@': '/resources/js',
     },
   },
 });
+// export default defineConfig({
+//   plugins: [
+//     laravel({
+//       input: 'resources/js/app.tsx',
+//       refresh: true,
+//     }),
+//     react(),
+//   ],
+//   resolve: {
+//     alias: {
+//       '@': '/resources/js',
+//     },
+//   },
+// });

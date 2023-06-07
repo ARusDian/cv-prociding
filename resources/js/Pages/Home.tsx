@@ -5,16 +5,15 @@ import "../../css/app.css";
 
 interface Props {
   content: any,
+  title: string,
   active: string
 }
 
-const Home = ({ content, active }: Props) => {
-  console.log(content);
-
+const Home = ({ content, active, title }: Props) => {
   return (
-    <MasterLayoutCSS active={active}>
-      <div className="w-[70%] mx-auto mt-[70px] pt-4 font-roboto">
-        <div className="break-words">
+    <MasterLayoutCSS active={active} title={title}>
+      <div className="w-[80%] sm:w-[70%] mx-auto mt-[10px] pt-4 font-roboto -z-100">
+        <div className="break-words pb-4">
           {content ? parse(content.content) : (<>Tidak ada content</>)}
         </div>
       </div>

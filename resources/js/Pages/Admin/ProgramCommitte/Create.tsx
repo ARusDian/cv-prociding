@@ -52,7 +52,7 @@ const ProgramCommitte = () => {
             </div>
           </form>
         </div>
-        <button className="px-4 py-2 text-base rounded-full bg-[#77B8A3] hover:bg-[#FFA500]">Submit</button>
+        <button className="px-4 py-2 text-base rounded-full bg-[#77B8A3] hover:bg-[#FFA500]" onClick={submitHandler}>Submit</button>
         {/* <button style={{ marginTop: "12px", backgroundColor: "#FFAF50", borderWidth: 1, borderColor: "#FFA500", padding: "12px 24px", fontSize: "14px", borderRadius: "16px" }}>Submit</button> */}
       </MainDashboardAdminTailwind>
     </div>

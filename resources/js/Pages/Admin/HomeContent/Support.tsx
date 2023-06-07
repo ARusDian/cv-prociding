@@ -138,7 +138,7 @@ const Supported = ({ supports }: Props) => {
           </div>
           {error && (<div className="text-red-500">{error}</div>)}
           <div className='flex flex-row justify-between gap-4'>
-            <input type="file" name='img' className="rounded-lg w-full md:w-96 border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
+            <input type="file" name='img' className="rounded-lg w-full md:w-96 border border-green-900 file:h-full file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
               imageForm.setData("img", e.target.files![0])
               setEnabled(true)
             }} />
