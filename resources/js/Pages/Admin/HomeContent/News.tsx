@@ -22,12 +22,14 @@ const News = ({ news }: Props) => {
   const newsForm = useForm<IHomeNewsForm>({
     title: "",
     content: "",
-    img: ""
+    img: "",
+    linkTo: ""
   });
   const editNewsForm = useForm<IHomeNewsForm>({
     title: "",
     content: "",
-    img: ""
+    img: "",
+    linkTo: ""
   });
   const activeToggleForm = useForm();
 
@@ -45,6 +47,9 @@ const News = ({ news }: Props) => {
         setLoading(false)
         setError(errors.message)
         console.log(errors)
+      },
+      onFinish: () => {
+        newsForm.reset();
       }
     })
   }
@@ -63,6 +68,9 @@ const News = ({ news }: Props) => {
         setLoading(false)
         setError(errors.message)
         console.log(errors);
+      },
+      onFinish: () => {
+        editNewsForm.reset();
       }
     })
   }
@@ -103,15 +111,25 @@ const News = ({ news }: Props) => {
           <div className="flex flex-col justify-start gap-5 h-full">
             <div className="flex flex-row justify-between">
               <h1 className='text-2xl font-bold'>Add News</h1>
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={onSubmitHandler}>Submit</button>
+              {(newsForm.data.title && newsForm.data.content && newsForm.data.img && newsForm.data.linkTo) ?
+                <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={onSubmitHandler}>Submit</button>
+                :
+                <button disabled className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={onSubmitHandler}>Submit</button>
+              }
             </div>
-            <div className="flex flex-col gap-2">
-              <p className='font-semibold'>Title</p>
-              <input type="text" name="title" id="" className='w-full rounded-lg text-lg' value={newsForm.data.title} onChange={(e) => newsForm.setData('title', e.target.value)}/>
+            <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-col gap-2 w-full">
+                <p className='font-semibold'>Title</p>
+                <input type="text" name="title" id="" className='w-full rounded-lg text-lg' value={newsForm.data.title} onChange={(e) => newsForm.setData('title', e.target.value)} />
+              </div>
+              <div className="flex flex-col gap-2 w-full">
+                <p className='font-semibold'>Link To</p>
+                <input type="text" name="title" id="" className='w-full rounded-lg text-lg' value={newsForm.data.linkTo} onChange={(e) => newsForm.setData('linkTo', e.target.value)} />
+              </div>
             </div>
             <div className="flex flex-col gap-2">
               <p className='font-semibold'>Content</p>
-              <textarea name="content" className='w-full rounded-lg text-lg h-32 resize-none'value={newsForm.data.content} onChange={(e) => newsForm.setData('content', e.target.value)} />
+              <textarea name="content" className='w-full rounded-lg text-lg h-32 resize-none' value={newsForm.data.content} onChange={(e) => newsForm.setData('content', e.target.value)} />
             </div>
             <div className="flex flex-row items-center justify-between gap-6">
               <input type="file" name='img' className="rounded-lg w-full border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
@@ -132,7 +150,7 @@ const News = ({ news }: Props) => {
           </div>
         </DialogContent>
       </Dialog>
-      
+
       <Dialog open={editOpenToggle} onClose={() => setEditOpenToggle(prev => !prev)} maxWidth='lg'>
         <DialogContent className='w-[1000px] h-[900px] max-w-6xl'>
           <div className="flex flex-col justify-start gap-5 h-full">
@@ -140,13 +158,19 @@ const News = ({ news }: Props) => {
               <h1 className='text-2xl font-bold'>Edit News</h1>
               <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={() => onEditHandler(currentEditedId!)}>Submit</button>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className='font-semibold'>Title</p>
-              <input type="text" name="title" id="" className='w-full rounded-lg text-lg' value={editNewsForm.data.title} onChange={(e) => editNewsForm.setData('title', e.target.value)}/>
+            <div className="flex flex-row gap-4 w-full">
+              <div className="flex flex-col gap-2 w-full">
+                <p className='font-semibold'>Title</p>
+                <input type="text" name="title" id="" className='w-full rounded-lg text-lg' value={editNewsForm.data.title} onChange={(e) => editNewsForm.setData('title', e.target.value)} />
+              </div>
+              <div className="flex flex-col gap-2 w-full">
+                <p className='font-semibold'>Link To</p>
+                <input type="text" name="title" id="" className='w-full rounded-lg text-lg' value={editNewsForm.data.linkTo} onChange={(e) => editNewsForm.setData('linkTo', e.target.value)} />
+              </div>
             </div>
             <div className="flex flex-col gap-2">
               <p className='font-semibold'>Content</p>
-              <textarea name="content" className='w-full rounded-lg text-lg h-32 resize-none'value={editNewsForm.data.content} onChange={(e) => editNewsForm.setData('content', e.target.value)} />
+              <textarea name="content" className='w-full rounded-lg text-lg h-32 resize-none' value={editNewsForm.data.content} onChange={(e) => editNewsForm.setData('content', e.target.value)} />
             </div>
             <div className="flex flex-row items-center justify-between gap-6">
               <input type="file" name='img' className="rounded-lg w-full border border-green-900 file:bg-green-500 file:py-2 file:px-4 file:mr-4 file:border-none file:hover:cursor-pointer file:placeholder:" accept='.jpg, .jpeg, .png' onChange={(e) => {
@@ -214,6 +238,10 @@ const News = ({ news }: Props) => {
             header: 'Content',
           },
           {
+            accessorKey: 'link_to',
+            header: 'Link',
+          },
+          {
             accessorKey: 'image',
             header: 'Image',
           },
@@ -234,31 +262,35 @@ const News = ({ news }: Props) => {
         enableRowNumbers
         positionActionsColumn='last'
         renderRowActions={({ row }) => (
-          <div className="flex flex-row gap-2">
-            <button onClick={() => {
-              onActiveToggleHandler(row.original.id);
-            }}
-              className={row.original.is_active ? "bg-green-500 text-center w-24 text-white hover:bg-green-600 py-3 px-5 rounded-lg text-md font-semibold" : "bg-red-500 text-white hover:bg-red-600 py-3 px-5 text-center w-24 rounded-lg text-md font-semibold"} >
-              {row.original.is_active ? "Inactive" : "Active"}
-            </button>
-            <a target='_blank' href={row.original.image}
-              className="bg-blue-500 text-white hover:bg-blue-600 py-3 px-5 rounded-lg text-md font-semibold">
-              Image
-            </a>
-            <button onClick={() => {
-              setCurrentEditedId(row.original.id)
-              setEditOpenToggle(prev => !prev)
-            }}
-              className="bg-yellow-500 text-white hover:bg-yellow-600 py-3 px-5 rounded-lg text-md font-semibold">
-              Edit
-            </button>
-            <button onClick={() => {
-              setDeleteOpenToggle(prev => !prev)
-              setCurrentEditedId(row.original.id)
-            }}
-              className="bg-red-500 text-white hover:bg-red-600 py-3 px-5 rounded-lg text-md font-semibold">
-              Delete
-            </button>
+          <div className="flex flex-col gap-2 w-48">
+            <div className="flex flex-row gap-2 w-full justify-between">
+              <button onClick={() => {
+                onActiveToggleHandler(row.original.id);
+              }}
+                className={row.original.is_active ? "bg-green-500 text-center w-24 text-white hover:bg-green-600 py-3 px-5 rounded-lg text-md font-semibold" : "bg-red-500 text-white hover:bg-red-600 py-3 px-5 text-center w-24 rounded-lg text-md font-semibold"} >
+                {row.original.is_active ? "Inactive" : "Active"}
+              </button>
+              <a target='_blank' href={row.original.image}
+                className="bg-blue-500 text-white hover:bg-blue-600 py-3 px-5 rounded-lg text-md font-semibold">
+                Image
+              </a>
+            </div>
+            <div className="flex flex-row gap-2 justify-between">
+              <button onClick={() => {
+                setCurrentEditedId(row.original.id)
+                setEditOpenToggle(prev => !prev)
+              }}
+                className="bg-yellow-500 text-white w-24 hover:bg-yellow-600 py-3 px-5 rounded-lg text-md font-semibold">
+                Edit
+              </button>
+              <button onClick={() => {
+                setDeleteOpenToggle(prev => !prev)
+                setCurrentEditedId(row.original.id)
+              }}
+                className="bg-red-500 text-white hover:bg-red-600 py-3 px-5 rounded-lg text-md font-semibold">
+                Delete
+              </button>
+            </div>
           </div>
         )}
       />

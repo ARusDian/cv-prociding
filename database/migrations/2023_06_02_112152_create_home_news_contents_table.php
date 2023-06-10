@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable(false);
             $table->text('content')->nullable(false);
+            $table->string('link_to')->nullable(false);
             $table->string('image')->nullable(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();

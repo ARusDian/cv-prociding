@@ -22,6 +22,7 @@ class HomeNewsContentController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'linkTo' => 'required',
             'img' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
@@ -33,6 +34,7 @@ class HomeNewsContentController extends Controller
         HomeNewsContent::create([
             'title' => $request->title,
             'content' => $request->content,
+            'link_to' => $request->linkTo,
             'image' => url('/') . '/' . 'storage/' . $imgPath,
         ]);
 
@@ -42,8 +44,9 @@ class HomeNewsContentController extends Controller
     public function update(Request $request, HomeNewsContent $news)
     {
         $currentImgPath = '';
-        if ($request->image != $request->img) {
-            $currentImgPath = explode('storage/', $request->image);
+        $imgPath = '';
+        if ($request->img) {
+            $currentImgPath = explode('storage/', $news->image);
             $currentImgPath = $currentImgPath[1];
             Storage::disk('public')->delete($currentImgPath);
 
@@ -53,9 +56,18 @@ class HomeNewsContentController extends Controller
             Storage::disk('public')->put($imgPath, $img->getContent());
         }
 
-        $news->title = $request->title;
-        $news->content = $request->content;
-        $news->image = url('/') . '/' . 'storage/' . $imgPath;
+        if ($request->title) {
+            $news->title = $request->title;
+        }
+        if ($request->content) {
+            $news->content = $request->content;
+        }
+        if ($request->link_to) {
+            $news->link_to = $request->link_to;
+        }
+        if ($imgPath) {
+            $news->image = url('/') . '/' . 'storage/' . $imgPath;
+        }
         $news->save();
 
         return redirect()->route('home.news.show');

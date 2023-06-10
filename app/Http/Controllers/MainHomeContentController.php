@@ -34,7 +34,8 @@ class MainHomeContentController extends Controller
                 "title" => "No News",
                 "content" => "",
                 "image" => "",
-                "is_active" => ""
+                "is_active" => "",
+                "link_to" => ""
             ],
             "keynotes" => $keynotes ? $keynotes : [],
             "galleries" => $galleries ? $galleries : [],

@@ -17,13 +17,15 @@ export interface IHomeNews {
   image: string,
   title: string,
   content: string,
-  is_active: boolean
+  is_active: boolean,
+  link_to: string,
 }
 
 export interface IHomeNewsForm  {
   title: string,
   content: string,
   img: File | string,
+  linkTo: string,
 }
 
 export interface IHomeKeynote {
