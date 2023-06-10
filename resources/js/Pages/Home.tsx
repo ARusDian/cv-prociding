@@ -10,11 +10,12 @@ interface Props {
 }
 
 const Home = ({ content, active, title }: Props) => {
+
   return (
-    <MasterLayoutCSS active={active} title={title}>
+    <MasterLayoutCSS active={active}>
       <div className="w-[80%] sm:w-[70%] mx-auto mt-[10px] pt-4 font-roboto -z-100">
         <div className="break-words pb-4">
-          {content ? parse(content.content) : (<>Tidak ada content</>)}
+          {content ? parse(content.content) : (<p className='text-center'>No content</p>)}
         </div>
       </div>
     </MasterLayoutCSS>

@@ -7,11 +7,10 @@ import "../../css/app.css"
 
 interface Props {
   children: React.ReactNode
-  title: string
   active: string
 }
 // window.location.reload();
-const MasterLayoutCSS = ({ children, active, title }: Props) => {
+const MasterLayoutCSS = ({ children, active }: Props) => {
   const [navbarDropdownOpen, setNavbarDropdownOpen] = React.useState(false);
   // let actived = () => {
   //   if (active === "proc") {
@@ -24,12 +23,11 @@ const MasterLayoutCSS = ({ children, active, title }: Props) => {
   //     return "Submission";
   //   }
   // }
-  const screenTitle = active === "proc" ? "Program Committee" : active === "pub" ? "Publication Opportunity" : active === "sci-rev" ? "Scientific Review Team" : active === "sub" ? "Submission Guideline" : "";
-
+  const screenTitle = active === "proc" ? "Program Committee" : active === "pub" ? "Publication Opportunity" : active === "sci-rev" ? "Scientific Review Team" : active === "sub" ? "Submission Guideline" : "Home";
 
   return (
     <>
-      <Head title={`${title ?? ""} | ICIEP`}>
+      <Head title={`${screenTitle} | ICIEP`}>
         <link rel="icon" type="image/svg+xml" href={asset('root', 'assets/images/icon_logo.png')} />
       </Head>
       <div className='z-50'>

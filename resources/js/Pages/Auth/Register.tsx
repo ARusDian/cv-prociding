@@ -84,7 +84,8 @@ export default function Register() {
         <Tabs
           value={tabIndex}
           onChange={handleOnTabChange}
-          indicatorColor="secondary"
+          className=''
+          TabIndicatorProps={{style: {background:'#ffa500'}}}
           textColor="inherit"
           variant="fullWidth"
           aria-label="full width tabs example"
@@ -99,7 +100,7 @@ export default function Register() {
             <TextInput
               id="name"
               type="text"
-              className="mt-1 block w-full"
+              className="mt-1 block w-full focus:ring-[#ffa500] focus:border-[#ffa500]"
               value={form.data.name}
               onChange={e => form.setData('name', e.currentTarget.value)}
               required
@@ -113,7 +114,7 @@ export default function Register() {
             <TextInput
               id="phone_number"
               type="text"
-              className="mt-1 block w-full"
+              className="mt-1 block w-full focus:ring-[#ffa500] focus:border-[#ffa500]"
               value={form.data.phone_number}
               onChange={e => form.setData('phone_number', e.currentTarget.value)}
               required
@@ -142,10 +143,10 @@ export default function Register() {
               Already registered?
             </InertiaLink>
             <button
-              className='inline-flex items-center px-4 py-2 bg-sky-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition'
+              className='inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition bg-[#ffa500] hover:bg-[#ec9a00]'
               onClick={() => setTabIndex(1)}
             >
-              Selanjutnya
+              NEXT
             </button>
           </div>
         </TabPanel>
@@ -155,7 +156,7 @@ export default function Register() {
             <TextInput
               id="email"
               type="email"
-              className="mt-1 block w-full"
+              className="mt-1 block w-full focus:ring-[#ffa500] focus:border-[#ffa500]"
               value={form.data.email}
               onChange={e => form.setData('email', e.currentTarget.value)}
               required
@@ -168,7 +169,7 @@ export default function Register() {
             <TextInput
               id="password"
               type="password"
-              className="mt-1 block w-full"
+              className="mt-1 block w-full focus:ring-[#ffa500] focus:border-[#ffa500]"
               value={form.data.password}
               onChange={e => form.setData('password', e.currentTarget.value)}
               required
@@ -182,7 +183,7 @@ export default function Register() {
             <TextInput
               id="password_confirmation"
               type="password"
-              className="mt-1 block w-full"
+              className="mt-1 block w-full focus:ring-[#ffa500] focus:border-[#ffa500]"
               value={form.data.password_confirmation}
               onChange={e =>
                 form.setData('password_confirmation', e.currentTarget.value)
@@ -237,10 +238,10 @@ export default function Register() {
           <div className="flex items-center justify-between mt-4">
             
             <button
-              className='inline-flex items-center px-4 py-2 bg-sky-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition'
+              className='inline-flex items-center px-4 py-2  border border-transparent rounded-md font-black text-xs text-white uppercase tracking-widest  active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition bg-[#ffa500] hover:bg-[#ec9a00]'
               onClick={() => setTabIndex(0)}
             >
-              Kembali
+              Back
             </button>
             <InertiaLink
               href={route('login')}
@@ -249,7 +250,7 @@ export default function Register() {
               Already registered?
             </InertiaLink>
             <PrimaryButton
-              className={classNames('ml-4', { 'opacity-25': form.processing })}
+              className={classNames('ml-4', 'bg-[#ffa500]', 'hover:bg-[#ec9a00]', { 'opacity-25': form.processing })}
               disabled={form.processing}
             >
               Register

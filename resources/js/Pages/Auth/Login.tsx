@@ -44,7 +44,7 @@ export default function Login({ canResetPassword, status }: Props) {
           <TextInput
             id="email"
             type="email"
-            className="mt-1 block w-full"
+            className="mt-1 block w-full focus:ring-[#ffa500] focus:border-[#ffa500]"
             value={form.data.email}
             onChange={e => form.setData('email', e.currentTarget.value)}
             required
@@ -58,7 +58,7 @@ export default function Login({ canResetPassword, status }: Props) {
           <TextInput
             id="password"
             type="password"
-            className="mt-1 block w-full"
+            className="mt-1 block w-full focus:ring-[#ffa500] focus:border-[#ffa500]"
             value={form.data.password}
             onChange={e => form.setData('password', e.currentTarget.value)}
             required
@@ -70,6 +70,7 @@ export default function Login({ canResetPassword, status }: Props) {
         <div className="mt-4">
           <label className="flex items-center">
             <Checkbox
+            className='checked:bg-[#ffa500] checked:border-[#ffa500] checked:hover:bg-[#ffa500] checked:focus:bg-[#ffa500]'
               name="remember"
               checked={form.data.remember === 'on'}
               onChange={e =>
@@ -101,7 +102,7 @@ export default function Login({ canResetPassword, status }: Props) {
             </InertiaLink>
 
             <PrimaryButton
-              className={classNames('ml-4', { 'opacity-25': form.processing })}
+              className={classNames('ml-4', 'bg-[#ffa500]', 'hover:bg-[#ec9a00]', { 'opacity-25': form.processing })}
               disabled={form.processing}
             >
               Log in

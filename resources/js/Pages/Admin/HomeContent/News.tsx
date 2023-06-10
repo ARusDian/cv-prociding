@@ -137,8 +137,8 @@ const News = ({ news }: Props) => {
         <DialogContent className='w-[1000px] h-[900px] max-w-6xl'>
           <div className="flex flex-col justify-start gap-5 h-full">
             <div className="flex flex-row justify-between">
-              <h1 className='text-2xl font-bold'>Add News</h1>
-              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={onSubmitHandler}>Submit</button>
+              <h1 className='text-2xl font-bold'>Edit News</h1>
+              <button className='px-4 py-2 bg-green-500 rounded-lg font-bold text-white hover:bg-green-600' onClick={() => onEditHandler(currentEditedId!)}>Submit</button>
             </div>
             <div className="flex flex-col gap-2">
               <p className='font-semibold'>Title</p>

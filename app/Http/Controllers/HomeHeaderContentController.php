@@ -45,7 +45,7 @@ class HomeHeaderContentController extends Controller
       'subtitle' => $request->subtitle,
     ]);
 
-    return redirect()->route('home.keynote.show');
+    return redirect()->route('home.header.show');
   }
 
   public function update(Request $request, HomeHeaderContent $homeHeader)
@@ -83,6 +83,6 @@ class HomeHeaderContentController extends Controller
     ]);
 
     $homeHeader->save();
-    return redirect()->route('home.keynote.show');
+    return redirect()->route('home.header.show');
   }
 }

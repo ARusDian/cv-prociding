@@ -48,6 +48,9 @@ class HomeKeynoteContentController extends Controller
     for($i = 0; $i <= count($existingKeynotes) - 1; $i++) {
       if(!in_array($existingKeynotes[$i]->id, array_column($keynotes, 'id'))) {
         $existingKeynoteImage = explode('storage/', $existingKeynotes[$i]->img_path);
+        if (!$existingKeynoteImage) {
+          continue;
+        };
         $existingKeynoteImage = $existingKeynoteImage[1];
         Storage::disk('public')->delete($existingKeynoteImage);
         $existingKeynotes[$i]->delete();
@@ -97,7 +100,7 @@ class HomeKeynoteContentController extends Controller
       }
     });
 
-    return redirect()->route('home.header.show');
+    return redirect()->route('home.keynote.show');
   }
 
   /**
