@@ -46,11 +46,8 @@ class HomeKeynoteContentController extends Controller
 		// }
 
     for($i = 0; $i <= count($existingKeynotes) - 1; $i++) {
-      if(!in_array($existingKeynotes[$i]->id, array_column($keynotes, 'id'))) {
+      if(!in_array($existingKeynotes[$i]->img_path, array_column($keynotes, 'img_path'))) {
         $existingKeynoteImage = explode('storage/', $existingKeynotes[$i]->img_path);
-        if (!$existingKeynoteImage) {
-          continue;
-        };
         $existingKeynoteImage = $existingKeynoteImage[1];
         Storage::disk('public')->delete($existingKeynoteImage);
         $existingKeynotes[$i]->delete();
@@ -71,12 +68,6 @@ class HomeKeynoteContentController extends Controller
         }
 
         if (in_array($keynote['id'], $existingKeynotes->pluck('id')->toArray())) {
-          if ($newImg) {
-            $existingKeynoteImage = explode('storage/', $keynote['img_path']);
-            $existingKeynoteImage = $existingKeynoteImage[1];
-            Storage::disk('public')->delete($existingKeynoteImage);
-          }
-
           HomeKeynoteContent::where('id', $keynote['id'])->update([
             'title' => $keynote['title'],
             'name' => $keynote['name'],
