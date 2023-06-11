@@ -6,6 +6,7 @@ import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
 import { RouteContext } from '@/Hooks/useRoute';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { asset } from './Models/Helper';
 
 const appName =
   window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
@@ -20,6 +21,7 @@ createInertiaApp({
   setup({ el, App, props }) {
     return render(
       <RouteContext.Provider value={(window as any).route}>
+        {/* <link rel="icon" type="image/svg+xml" href={asset('root', 'assets/images/icon_logo.png')} /> */}
         <App {...props} />
       </RouteContext.Provider>,
       el,

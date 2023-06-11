@@ -27,7 +27,7 @@ export default function Form(props: Props) {
                 <TextInput
                     id="name"
                     type="text"
-                    className="mt-1 block w-full"
+                    className="mt-1 block w-full focus:ring-[#ffa400] focus:border-[#ffa400]"
                     value={form.data.name}
                     onChange={e => form.setData('name', e.currentTarget.value)}
                     required
@@ -41,7 +41,7 @@ export default function Form(props: Props) {
                 <TextInput
                     id="email"
                     type="email"
-                    className="mt-1 block w-full"
+                    className="mt-1 block w-full focus:ring-[#ffa400] focus:border-[#ffa400]"
                     value={form.data.email}
                     onChange={e => form.setData('email', e.currentTarget.value)}
                     required
@@ -53,7 +53,7 @@ export default function Form(props: Props) {
                 <TextInput
                     id="password"
                     type="password"
-                    className="mt-1 block w-full"
+                    className="mt-1 block w-full focus:ring-[#ffa400] focus:border-[#ffa400]"
                     value={form.data.password}
                     onChange={e => form.setData('password', e.currentTarget.value)}
                     autoComplete="new-password"
@@ -71,6 +71,17 @@ export default function Form(props: Props) {
                     onChange={value => {
                         form.setData('roles', value.concat());
                     }}
+                    className='focus:ring-[#ffa400] focus:border-[#ffa400]'
+                    styles={{
+                        control: (baseStyles, state) => ({
+                            ...baseStyles,
+                            borderColor: state.isFocused ? '#ffa400' : '',
+                            boxShadow: '0 !important',
+                            '&:hover': {
+                                borderColor: '#ffa400',
+                            },
+                        }),
+                    }}
                 />
                 <InputError message={errors.get('roles')} className="mt-2" />
             </div>
@@ -79,7 +90,7 @@ export default function Form(props: Props) {
                 <TextInput
                     id="phone_number"
                     type="text"
-                    className="mt-1 block w-full"
+                    className="mt-1 block w-full focus:ring-[#ffa400] focus:border-[#ffa400]"
                     value={form.data.phone_number}
                     onChange={e => form.setData('phone_number', e.currentTarget.value)}
                     required

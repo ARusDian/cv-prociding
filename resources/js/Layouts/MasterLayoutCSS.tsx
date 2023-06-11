@@ -27,9 +27,7 @@ const MasterLayoutCSS = ({ children, active }: Props) => {
 
   return (
     <>
-      <Head title={`${screenTitle} | ICIEP`}>
-        <link rel="icon" type="image/svg+xml" href={asset('root', 'assets/images/icon_logo.png')} />
-      </Head>
+      <Head title={`${screenTitle} | ICIEP`} />
       <div className='z-50'>
         <nav className='w-full fixed top-0 left-0 bg-[#FFA500] text-base'>
           <div className="w-[70%] lg:w-[80%] h-[60px] m-auto flex flex-row items-center justify-between">

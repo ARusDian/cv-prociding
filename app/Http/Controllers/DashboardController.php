@@ -13,7 +13,11 @@ class DashboardController extends Controller
     //
     public function index()
     {
-        return Inertia::render('Dashboard', [
-        ]);
+        return Inertia::render("Admin/Dashboard");
+    }
+
+    public function users() {
+        
+        return Inertia::render("Admin/User/Index");
     }
 }

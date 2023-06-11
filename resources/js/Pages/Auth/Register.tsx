@@ -250,7 +250,10 @@ export default function Register() {
               Already registered?
             </InertiaLink>
             <PrimaryButton
-              className={classNames('ml-4', 'bg-[#ffa500]', 'hover:bg-[#ec9a00]', { 'opacity-25': form.processing })}
+              className={classNames('ml-4', { 'opacity-25': form.processing })}
+              style={{ 
+                backgroundColor: '#ffa400',
+               }}
               disabled={form.processing}
             >
               Register

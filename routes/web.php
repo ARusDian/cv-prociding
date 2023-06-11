@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Fortify\UserProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeGalleryContentController;
 use App\Http\Controllers\HomeHeaderContentController;
 use App\Http\Controllers\HomeKeynoteContentController;
@@ -52,18 +53,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
     ])->group(function () {
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name("dashboard");
         Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
         Route::middleware(['role:admin|super-admin'])->group(function () {
-            Route::middleware(['role:super-admin'])->group(function () {
+        Route::middleware(['role:super-admin'])->group(function () {
                 Route::resource('/user', UserController::class);
         });
-    });
-
-
-    Route::prefix('dashboard')->group(function () {
-        Route::get('/', function () {
-            return Inertia::render("Admin/Dashboard");
-        })->name("dashboard");
+        });
     
         Route::get('/home/header', [HomeHeaderContentController::class, 'show'])->name("home.header.show");
         Route::post("/home/header/create", [HomeHeaderContentController::class, "store"])->name("home.header.store");

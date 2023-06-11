@@ -2,7 +2,7 @@ import MaterialReactTable, { MRT_ColumnDef } from 'material-react-table';
 import React from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import route from 'ziggy-js';
-
+import MainDashboardAdminTailwind from "@/Layouts/MainDashboardAdminTailwind";
 import AppLayout from '@/Layouts/DashboardAdminLayout';
 import { User } from '@/types';
 import { Inertia } from '@inertiajs/inertia';
@@ -18,7 +18,7 @@ export default function Index(props: Props) {
     const dataColumns = [
         {
             accessorKey: 'name',
-            header: 'Nama User',
+            header: 'Name',
         },
         {
             accessorKey: 'email',
@@ -26,7 +26,7 @@ export default function Index(props: Props) {
         },
         {
             accessorKey: 'phone_number',
-            header: 'Nomor Telepon',
+            header: 'Phone Number',
         },
         {
             accessorFn: (row: User) => row.roles.map((role) => role.name).join(', '),
@@ -34,9 +34,9 @@ export default function Index(props: Props) {
         }
     ] as MRT_ColumnDef<typeof users[0]>[];
     return (
-        <AppLayout title="Users">
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <MainDashboardAdminTailwind>
+            <div className="py-4">
+                <div className="mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div className="p-6 sm:px-20 bg-white border-b border-gray-200">
                             <div className="flex justify-between">
@@ -46,8 +46,8 @@ export default function Index(props: Props) {
                                 <div className="">
                                     <InertiaLink
                                         href={route('user.create')}
-                                        className="bg-blue-500 text-white hover:bg-blue-600 py-3 px-5 rounded-lg text-md font-semibold">
-                                        Tambah User
+                                        className="bg-[#FFA500] text-white hover:bg-[#df9100] py-3 px-5 rounded-lg text-md font-bold">
+                                        Add User
                                     </InertiaLink>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ export default function Index(props: Props) {
                                     renderRowActions={({ row }) => (
                                         <div className="flex items-center justify-center gap-2">
                                             <InertiaLink href={route('user.show', row.original.id)} 
-                                                className="bg-blue-500 text-white hover:bg-blue-600 py-3 px-5 rounded-lg text-md font-semibold">
+                                                className="bg-[#FFA500] text-white hover:bg-[#df9100] py-3 px-5 rounded-lg text-md font-semibold">
                                                 Show
                                             </InertiaLink>
                                         </div>
@@ -78,6 +78,6 @@ export default function Index(props: Props) {
                     </div>
                 </div>
             </div>
-        </AppLayout>
+        </MainDashboardAdminTailwind>
     );
 }
