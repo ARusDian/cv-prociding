@@ -76,15 +76,15 @@ class PublicationOpportunityController extends Controller
 
   public function toggleActive(string $id) {
     $activedContent = PageContent::where('is_active', 1)->where('type', 'publicationOpportunity')->first();
-    $toBeActiveProgramCommitte = PageContent::where('id', $id)->where('type', 'publicationOpportunity')->first();
+    $toBeActivePublication = PageContent::where('id', $id)->where('type', 'publicationOpportunity')->first();
 
-    if ($activedContent && ($activedContent->id == $toBeActiveProgramCommitte->id)) {
+    if ($activedContent && ($activedContent->id == $toBeActivePublication->id)) {
       $activedContent->is_active = false;
       $activedContent->save();
     } else {
-      $is_active = $toBeActiveProgramCommitte->is_active;
-      $toBeActiveProgramCommitte->is_active = !$is_active;
-      $toBeActiveProgramCommitte->save();
+      $is_active = $toBeActivePublication->is_active;
+      $toBeActivePublication->is_active = !$is_active;
+      $toBeActivePublication->save();
       if ($activedContent) {
         $activedContent->is_active = false;
         $activedContent->save();
@@ -147,7 +147,7 @@ class PublicationOpportunityController extends Controller
   public function destroy($id) {
     $images = PageContentImage::where('page_content_id' , $id)->get();
     
-    return DB::transaction(function () use ($images, $id){
+    DB::transaction(function () use ($images, $id){
       foreach($images as $image){
         Storage::disk('public')->delete($image->path);
         $image->delete();
@@ -155,7 +155,8 @@ class PublicationOpportunityController extends Controller
 
       PageContent::find($id)->delete();
 
-      return redirect()->route('pub.home');
     });
+    
+    return redirect()->route('pub.home');
   }
 }

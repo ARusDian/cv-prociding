@@ -77,15 +77,15 @@ class SubmissionGuidelineController extends Controller
 
   public function toggleActive(string $id) {
     $activedContent = PageContent::where('is_active', 1)->where('type', 'submissionGuideline')->first();
-    $toBeActiveProgramCommitte = PageContent::where('id', $id)->where('type', 'submissionGuideline')->first();
+    $toBeActiveSubmission = PageContent::where('id', $id)->where('type', 'submissionGuideline')->first();
 
-    if ($activedContent && ($activedContent->id == $toBeActiveProgramCommitte->id)) {
+    if ($activedContent && ($activedContent->id == $toBeActiveSubmission->id)) {
       $activedContent->is_active = false;
       $activedContent->save();
     } else {
-      $is_active = $toBeActiveProgramCommitte->is_active;
-      $toBeActiveProgramCommitte->is_active = !$is_active;
-      $toBeActiveProgramCommitte->save();
+      $is_active = $toBeActiveSubmission->is_active;
+      $toBeActiveSubmission->is_active = !$is_active;
+      $toBeActiveSubmission->save();
       if ($activedContent) {
         $activedContent->is_active = false;
         $activedContent->save();
@@ -148,7 +148,7 @@ class SubmissionGuidelineController extends Controller
   public function destroy($id) {
     $images = PageContentImage::where('page_content_id' , $id)->get();
     
-    return DB::transaction(function () use ($images, $id){
+    DB::transaction(function () use ($images, $id){
       foreach($images as $image){
         Storage::disk('public')->delete($image->path);
         $image->delete();
@@ -156,7 +156,7 @@ class SubmissionGuidelineController extends Controller
 
       PageContent::find($id)->delete();
 
-      return redirect()->route('sub.home');
     });
+    return redirect()->route('sub.home');
   }
 }
