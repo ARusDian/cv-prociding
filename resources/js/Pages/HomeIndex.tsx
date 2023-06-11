@@ -48,13 +48,12 @@ const HomeIndex = ({ active, header, news, keynotes, galleries, timelines, publi
 
   return (
     <>
-    {/* PaperProps={{ style: {backgroundColor: "transparent", boxShadow: "none"} */}
-      <Dialog open={openGalleryModal} onClose={() => setOpenGalleryModal(false)} className='bg-transparent' fullWidth maxWidth="xl" PaperProps={{ style: {backgroundColor: "transparent", boxShadow: "none"}}}>
-        <DialogContent className='h-[800px] flex flex-col justify-center'>
+      <Dialog open={openGalleryModal} onClose={() => setOpenGalleryModal(false)} className='bg-transparent' fullWidth maxWidth="lg" 
+    PaperProps={{ style: {backgroundColor: "transparent", boxShadow: "none"}}}>
+        <DialogContent className='flex flex-col justify-center'>
         <Carousel
               index={galleryIndex}
-              className='bg-red-200 w-10/12 mx-auto '
-              height={700}
+              className={`w-full h-fit mx-auto `}
               animation="slide"
               indicators={false}
               navButtonsAlwaysVisible={true}
@@ -85,7 +84,7 @@ const HomeIndex = ({ active, header, news, keynotes, galleries, timelines, publi
               }
             >
               {galleries.map((gallery, index) => (
-                <img src={gallery.img_path} key={gallery.id} className='object-conatin h-full w-full rounded-lg '/>
+                <img src={gallery.img_path} key={gallery.id} className='object-contain rounded-lg '/>
               ))}
             </Carousel>
         </DialogContent>
@@ -101,10 +100,10 @@ const HomeIndex = ({ active, header, news, keynotes, galleries, timelines, publi
           }}>
           </div>
           <div className="flex flex-col justify-between items-center gap-2 lg:gap-4 -z-10 w-full">
-            <img src={header.logo_path ? header.logo_path : asset('root', 'assets/images/logo.png')} alt="" className='w-auto h-32 xl:h-60 object-contain' />
+            <img src={header.logo_path ? header.logo_path : asset('root', 'assets/images/logo.png')} alt="" className='w-auto h-48 md:h-60 object-contain' />
             <h1 className="text-xl text-center font-bold">{header.date_stamp ? `${moment(header.date_stamp).format("DD MMMM YYYY")}` : moment(new Date().toLocaleDateString()).format("DD MMMM YYYY")}</h1>
-            <h1 className="text-4xl xl:text-6xl 2xl:text-7xl font-black w-[60%] text-center break-words"> {header.title ? header.title : "International Conference on Innovation in Education and Pedagogy"}</h1>
-            <h1 className="text-base xl:text-xl text-center font-semibold w-[60%] break-words">{header.subtitle}</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-black w-[60%] text-center break-words"> {header.title ? header.title : "International Conference on Innovation in Education and Pedagogy"}</h1>
+            <h1 className="text-sm sm:text-lg lg:text-xl text-center font-semibold w-[60%] break-words">{header.subtitle}</h1>
           </div>
         </div>
         <div className="w-[80%] sm:w-[70%] mx-auto mt-10">

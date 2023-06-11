@@ -21,7 +21,7 @@ createInertiaApp({
   setup({ el, App, props }) {
     return render(
       <RouteContext.Provider value={(window as any).route}>
-        {/* <link rel="icon" type="image/svg+xml" href={asset('root', 'assets/images/icon_logo.png')} /> */}
+        <link rel="icon" type="image/svg+xml" href={asset('root', 'assets/images/icon_logo.png')} />
         <App {...props} />
       </RouteContext.Provider>,
       el,
