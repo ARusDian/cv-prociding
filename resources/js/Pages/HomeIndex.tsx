@@ -100,7 +100,7 @@ const HomeIndex = ({ active, header, news, keynotes, galleries, timelines, publi
           }}>
           </div>
           <div className="flex flex-col justify-between items-center gap-2 lg:gap-4 -z-10 w-full">
-            <img src={header.logo_path ? header.logo_path : asset('root', 'assets/images/logo.png')} alt="" className='w-auto h-48 md:h-60 object-contain' />
+            <img src={header.logo_path ? header.logo_path : asset('root', 'assets/images/logo.png')} alt="" className='w-auto h-48 md:h-72 object-contain' />
             <h1 className="text-xl text-center font-bold">{header.date_stamp ? `${moment(header.date_stamp).format("DD MMMM YYYY")}` : moment(new Date().toLocaleDateString()).format("DD MMMM YYYY")}</h1>
             <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-black w-[60%] text-center break-words"> {header.title ? header.title : "International Conference on Innovation in Education and Pedagogy"}</h1>
             <h1 className="text-sm sm:text-lg lg:text-xl text-center font-semibold w-[60%] break-words">{header.subtitle}</h1>
