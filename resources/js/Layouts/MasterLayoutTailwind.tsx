@@ -11,7 +11,7 @@ interface Props {
 const MasterLayoutTailwind = ({ children, active }: Props) => {
   return (
     <>
-      <Head title='CV - Prociding'/>
+      <Head title='Prosiding'/>
       <div>
         <nav className='w-full bg-[#FFA500] text-[16px] font-roboto'>
           <div className="w-[70%] h-[65px] m-auto flex flex-row items-center justify-between">

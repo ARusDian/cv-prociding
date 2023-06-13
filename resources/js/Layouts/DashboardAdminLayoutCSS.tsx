@@ -15,7 +15,7 @@ const DashboardAdminLayoutCSS = ({ redirectTo, headerTitle }: Props) => {
   return (
     <>
       <Head>
-        <title>CV - Prociding</title>
+        <title>Prosiding</title>
         <link rel="icon" type="image/svg+xml" href={asset('root', 'assets/images/Icon-MBC.JPG')} />
       </Head>
       <div>
